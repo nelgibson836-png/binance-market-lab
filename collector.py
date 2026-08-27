@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import urlopen, Request
 
-BASE_URL = "https://api.binance.com"
+BASE_URL = "https://data-api.binance.vision"
 
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
