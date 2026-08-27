@@ -1,22 +1,16 @@
 import json
+import os
 from datetime import datetime, timezone
-from pathlib import Path
-from urllib.request import urlopen, Request
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
+
+SYMBOLS = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT"]
 
 BASE_URL = "https://data-api.binance.vision"
-FUTURES_URL = "https://fapi.binance.com"
-
-DATA_DIR = Path("data")
-SPOT_DIR = DATA_DIR / "spot"
-FUTURES_DIR = DATA_DIR / "futures"
-ARBITRAGE_DIR = DATA_DIR / "arbitrage"
-
-for directory in [SPOT_DIR, FUTURES_DIR, ARBITRAGE_DIR]:
-    directory.mkdir(parents=True, exist_ok=True)
 
 
-def get_json(base_url, endpoint):
-    url = base_url + endpoint
+def get_json(path):
+    url = BASE_URL + path
 
     request = Request(
         url,
@@ -25,216 +19,71 @@ def get_json(base_url, endpoint):
         }
     )
 
-    with urlopen(request, timeout=20) as response:
+    with urlopen(request, timeout=15) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
-def save_jsonl(path, data):
-    with path.open("a", encoding="utf-8") as file:
-        file.write(json.dumps(data, separators=(",", ":")) + "\n")
-
-
-def collect_spot():
-    print("Recopilando mercado Spot...")
-
-    exchange_info = get_json(
-        BASE_URL,
-        "/api/v3/exchangeInfo"
+def collect_symbol(symbol):
+    ticker = get_json(
+        f"/api/v3/ticker/24hr?symbol={symbol}"
     )
 
-    symbols = []
-
-    for symbol in exchange_info["symbols"]:
-        if (
-            symbol["status"] == "TRADING"
-            and symbol["quoteAsset"] == "USDT"
-            and symbol["isSpotTradingAllowed"]
-        ):
-            symbols.append(symbol["symbol"])
-
-    print(f"Pares Spot USDT encontrados: {len(symbols)}")
-
-    tickers = get_json(
-        BASE_URL,
-        "/api/v3/ticker/24hr"
+    book = get_json(
+        f"/api/v3/ticker/bookTicker?symbol={symbol}"
     )
 
-    ticker_map = {
-        ticker["symbol"]: ticker
-        for ticker in tickers
-        if ticker["symbol"] in symbols
+    bid = float(book["bidPrice"])
+    ask = float(book["askPrice"])
+
+    spread = ask - bid
+
+    if bid > 0:
+        spread_percent = (spread / bid) * 100
+    else:
+        spread_percent = 0
+
+    data = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "symbol": symbol,
+        "price": float(ticker["lastPrice"]),
+        "volume_24h": float(ticker["volume"]),
+        "price_change_percent": float(ticker["priceChangePercent"]),
+        "bid": bid,
+        "ask": ask,
+        "bid_qty": float(book["bidQty"]),
+        "ask_qty": float(book["askQty"]),
+        "spread": spread,
+        "spread_percent": spread_percent
     }
 
-    timestamp = datetime.now(timezone.utc).isoformat()
-
-    count = 0
-
-    for symbol in symbols:
-
-        ticker = ticker_map.get(symbol)
-
-        if not ticker:
-            continue
-
-        record = {
-            "timestamp": timestamp,
-            "symbol": symbol,
-            "price": float(ticker["lastPrice"]),
-            "bid": None,
-            "ask": None,
-            "volume": float(ticker["volume"]),
-            "quote_volume": float(ticker["quoteVolume"]),
-            "price_change_percent": float(
-                ticker["priceChangePercent"]
-            )
-        }
-
-        save_jsonl(
-            SPOT_DIR / "market.jsonl",
-            record
-        )
-
-        count += 1
-
-    print(f"Datos Spot guardados: {count}")
-
-
-def collect_futures():
-    print("Recopilando Funding Futures...")
-
-    funding = get_json(
-        FUTURES_URL,
-        "/fapi/v1/premiumIndex"
-    )
-
-    timestamp = datetime.now(timezone.utc).isoformat()
-
-    count = 0
-
-    for item in funding:
-
-        symbol = item.get("symbol")
-
-        if not symbol:
-            continue
-
-        record = {
-            "timestamp": timestamp,
-            "symbol": symbol,
-            "mark_price": float(item["markPrice"]),
-            "index_price": float(item["indexPrice"]),
-            "funding_rate": float(item["lastFundingRate"]),
-            "next_funding_time": item["nextFundingTime"]
-        }
-
-        save_jsonl(
-            FUTURES_DIR / "funding.jsonl",
-            record
-        )
-
-        count += 1
-
-    print(f"Datos Funding guardados: {count}")
-
-
-def calculate_triangular_arbitrage():
-
-    print("Analizando arbitraje triangular...")
-
-    tickers = get_json(
-        BASE_URL,
-        "/api/v3/ticker/bookTicker"
-    )
-
-    books = {
-        item["symbol"]: {
-            "bid": float(item["bidPrice"]),
-            "ask": float(item["askPrice"])
-        }
-        for item in tickers
-        if float(item["bidPrice"]) > 0
-        and float(item["askPrice"]) > 0
-    }
-
-    routes = [
-        ("BTCUSDT", "ETHBTC", "ETHUSDT"),
-        ("BTCUSDT", "BNBBTC", "BNBUSDT"),
-        ("BTCUSDT", "SOLBTC", "SOLUSDT"),
-        ("ETHUSDT", "BNBETH", "BNBUSDT"),
-        ("ETHUSDT", "SOLETH", "SOLUSDT"),
-    ]
-
-    timestamp = datetime.now(timezone.utc).isoformat()
-
-    opportunities = 0
-
-    fee = 0.001
-
-    for leg1, leg2, leg3 in routes:
-
-        if not all(
-            symbol in books
-            for symbol in [leg1, leg2, leg3]
-        ):
-            continue
-
-        a = books[leg1]
-        b = books[leg2]
-        c = books[leg3]
-
-        start = 1.0
-
-        step1 = start / a["ask"]
-        step1 *= 1 - fee
-
-        step2 = step1 / b["ask"]
-        step2 *= 1 - fee
-
-        final = step2 * c["bid"]
-        final *= 1 - fee
-
-        profit_percent = (final - start) * 100
-
-        record = {
-            "timestamp": timestamp,
-            "route": [
-                leg1,
-                leg2,
-                leg3
-            ],
-            "initial": start,
-            "final": final,
-            "profit_percent": profit_percent,
-            "profitable_after_fee": profit_percent > 0
-        }
-
-        save_jsonl(
-            ARBITRAGE_DIR / "opportunities.jsonl",
-            record
-        )
-
-        if profit_percent > 0:
-            opportunities += 1
-
-    print(
-        f"Oportunidades triangulares positivas: "
-        f"{opportunities}"
-    )
+    return data
 
 
 def collect():
+    print("Consultando Binance...")
 
-    print("=" * 60)
-    print("BINANCE MARKET LAB")
-    print("=" * 60)
+    os.makedirs("data", exist_ok=True)
 
-    collect_spot()
-    collect_futures()
-    calculate_triangular_arbitrage()
+    output_file = "data/market_data.jsonl"
 
-    print("=" * 60)
-    print("Ciclo terminado")
-    print("=" * 60)
+    with open(output_file, "a", encoding="utf-8") as file:
+
+        for symbol in SYMBOLS:
+
+            try:
+                data = collect_symbol(symbol)
+
+                file.write(
+                    json.dumps(data, ensure_ascii=False) + "\n"
+                )
+
+                print(json.dumps(data, indent=2))
+
+            except (HTTPError, URLError, TimeoutError) as error:
+                print(f"Error consultando {symbol}: {error}")
+
+            except Exception as error:
+                print(f"Error inesperado en {symbol}: {error}")
 
 
 if __name__ == "__main__":
