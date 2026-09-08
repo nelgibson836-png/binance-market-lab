@@ -1,50 +1,50 @@
 {
-  "generated_at": "2026-09-07T22:10:16.053139+00:00",
-  "total_records": 313,
+  "generated_at": "2026-09-08T00:19:43.224579+00:00",
+  "total_records": 317,
   "symbols": {
     "BTCUSDT": {
-      "records": 77,
+      "records": 78,
       "first_record": "2026-08-27T21:32:20.128715+00:00",
-      "last_record": "2026-09-07T22:09:58.345895+00:00",
-      "average_interval_seconds": 12534.98,
+      "last_record": "2026-09-08T00:19:30.762303+00:00",
+      "average_interval_seconds": 12473.13,
       "minimum_interval_seconds": 1771.493108,
       "maximum_interval_seconds": 43155.451683,
       "duplicate_timestamps": 0,
       "current_candles_closed": 0,
-      "current_candles_open": 81
+      "current_candles_open": 84
     },
     "ETHUSDT": {
-      "records": 77,
+      "records": 78,
       "first_record": "2026-08-27T21:32:25.135387+00:00",
-      "last_record": "2026-09-07T22:10:03.667645+00:00",
-      "average_interval_seconds": 12534.98,
+      "last_record": "2026-09-08T00:19:33.903189+00:00",
+      "average_interval_seconds": 12473.1,
       "minimum_interval_seconds": 1770.709906,
       "maximum_interval_seconds": 43154.519264,
       "duplicate_timestamps": 0,
       "current_candles_closed": 0,
-      "current_candles_open": 81
+      "current_candles_open": 84
     },
     "BNBUSDT": {
-      "records": 77,
+      "records": 78,
       "first_record": "2026-08-27T21:32:29.169619+00:00",
-      "last_record": "2026-09-07T22:10:07.797875+00:00",
-      "average_interval_seconds": 12534.98,
+      "last_record": "2026-09-08T00:19:37.013483+00:00",
+      "average_interval_seconds": 12473.09,
       "minimum_interval_seconds": 1769.876043,
       "maximum_interval_seconds": 43153.435563,
       "duplicate_timestamps": 0,
       "current_candles_closed": 0,
-      "current_candles_open": 81
+      "current_candles_open": 84
     },
     "SOLUSDT": {
-      "records": 77,
+      "records": 78,
       "first_record": "2026-08-27T21:32:33.169836+00:00",
-      "last_record": "2026-09-07T22:10:11.839758+00:00",
-      "average_interval_seconds": 12534.98,
+      "last_record": "2026-09-08T00:19:40.092222+00:00",
+      "average_interval_seconds": 12473.08,
       "minimum_interval_seconds": 1769.494497,
       "maximum_interval_seconds": 43152.652454,
       "duplicate_timestamps": 0,
       "current_candles_closed": 1,
-      "current_candles_open": 80
+      "current_candles_open": 83
     }
   },
   "invalid_records": [
