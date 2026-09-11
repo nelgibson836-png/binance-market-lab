@@ -11,14 +11,19 @@ DAYS = 60
 INTERVAL = "1m"
 LIMIT = 1000
 OUTPUT_FILE = "data/backtest_15m.json"
-TRAIN_RATIO = 0.70
 MIN_TRAIN_SAMPLES = 100
 
-# Precio actual respecto a la apertura de la vela 15m.
+# Walk-forward: cada fold entrena solo con velas 15m anteriores
+# y prueba sobre velas 15m posteriores. Sin dividir una misma vela entre train/test.
+TRAIN_DAYS = 21
+TEST_DAYS = 7
+STEP_DAYS = 7
+
 MOVE_BINS = [
     -math.inf, -0.30, -0.20, -0.10, -0.05,
     0.00, 0.05, 0.10, 0.20, 0.30, math.inf
 ]
+THRESHOLDS = (0.55, 0.60, 0.65, 0.70)
 
 
 def get_json(path):
@@ -37,7 +42,7 @@ def fetch_klines():
     current_start = start_ms
 
     print("=" * 60)
-    print("BACKTEST 15M")
+    print("BACKTEST 15M WALK-FORWARD")
     print("=" * 60)
     print(f"Symbol   : {SYMBOL}")
     print(f"Periodo  : {DAYS} dias")
@@ -92,30 +97,46 @@ def move_bucket(move):
     return len(MOVE_BINS) - 2
 
 
-def build_observations(rows):
+def build_candles_15m(rows):
     grouped = {}
     for row in rows:
         candle_start = (row["open_time"] // 900_000) * 900_000
         grouped.setdefault(candle_start, []).append(row)
 
-    observations = []
+    candles = []
     for candle_start, candle_rows in sorted(grouped.items()):
         candle_rows.sort(key=lambda x: x["open_time"])
         if len(candle_rows) < 15:
             continue
 
+        candles.append({
+            "candle_start": candle_start,
+            "rows": candle_rows[:15],
+        })
+
+    return candles
+
+
+def build_observations(candles):
+    observations = []
+
+    for candle in candles:
+        candle_rows = candle["rows"]
         base = candle_rows[0]["open"]
         final_close = candle_rows[14]["close"]
         actual = 1 if final_close > base else 0
 
+        # minute=1 = cierre de la primera vela 1m de la vela 15m.
+        # Nunca usamos la información del futuro para construir la señal.
         for minute in range(1, 14):
-            current = candle_rows[minute]["close"]
+            current = candle_rows[minute - 1]["close"]
             move = pct_change(base, current)
-            m1 = pct_change(candle_rows[minute - 1]["close"], current)
-            m3 = pct_change(candle_rows[max(0, minute - 3)]["close"], current)
-            m5 = pct_change(candle_rows[max(0, minute - 5)]["close"], current)
+            m1 = pct_change(candle_rows[max(0, minute - 2)]["close"], current) if minute >= 2 else 0.0
+            m3 = pct_change(candle_rows[max(0, minute - 4)]["close"], current) if minute >= 4 else 0.0
+            m5 = pct_change(candle_rows[max(0, minute - 6)]["close"], current) if minute >= 6 else 0.0
+
             observations.append({
-                "candle_start": candle_start,
+                "candle_start": candle["candle_start"],
                 "minute": minute,
                 "move_bucket": move_bucket(move),
                 "move": move,
@@ -124,6 +145,7 @@ def build_observations(rows):
                 "m5": m5,
                 "actual": actual,
             })
+
     return observations
 
 
@@ -143,16 +165,19 @@ def fit_model(train):
     for key, (n, wins) in stats.items():
         if n >= MIN_TRAIN_SAMPLES:
             probabilities[key] = wins / n
+
     return probabilities, stats
 
 
 def baseline_accuracy(test):
     if not test:
         return 0.0
+
     correct = 0
     for obs in test:
         predicted = 1 if obs["move"] > 0 else 0
         correct += predicted == obs["actual"]
+
     return correct / len(test) * 100.0
 
 
@@ -162,8 +187,7 @@ def evaluate(test, probabilities, threshold):
     by_minute = {}
 
     for obs in test:
-        key = model_key(obs)
-        probability = probabilities.get(key)
+        probability = probabilities.get(model_key(obs))
         if probability is None:
             continue
 
@@ -184,7 +208,7 @@ def evaluate(test, probabilities, threshold):
         bucket[0] += 1
         bucket[1] += won
 
-    result = {
+    return {
         "threshold": threshold,
         "trades": trades,
         "wins": wins,
@@ -197,51 +221,135 @@ def evaluate(test, probabilities, threshold):
             for minute, values in sorted(by_minute.items(), key=lambda x: int(x[0]))
         },
     }
-    return result
+
+
+def add_metric(accumulator, result):
+    accumulator["trades"] += result["trades"]
+    accumulator["wins"] += result["wins"]
+
+
+def build_fold_ranges(candles):
+    if not candles:
+        return []
+
+    first_start = candles[0]["candle_start"]
+    last_start = candles[-1]["candle_start"]
+    day_ms = 24 * 60 * 60 * 1000
+    train_ms = TRAIN_DAYS * day_ms
+    test_ms = TEST_DAYS * day_ms
+    step_ms = STEP_DAYS * day_ms
+
+    folds = []
+    train_start = first_start
+
+    while train_start + train_ms + test_ms <= last_start + 900_000:
+        train_end = train_start + train_ms
+        test_end = train_end + test_ms
+        folds.append((train_start, train_end, test_end))
+        train_start += step_ms
+
+    return folds
+
+
+def observations_in_range(observations, start_ms, end_ms):
+    return [
+        obs for obs in observations
+        if start_ms <= obs["candle_start"] < end_ms
+    ]
 
 
 def main():
     rows = fetch_klines()
-    print(f"Total velas: {len(rows)}")
+    candles = build_candles_15m(rows)
+    observations = build_observations(candles)
 
-    observations = build_observations(rows)
-    observations.sort(key=lambda x: x["candle_start"])
-    split = int(len(observations) * TRAIN_RATIO)
-    train = observations[:split]
-    test = observations[split:]
+    print(f"Total velas 1m : {len(rows)}")
+    print(f"Velas 15m      : {len(candles)}")
+    print(f"Observaciones  : {len(observations)}")
 
-    probabilities, raw_stats = fit_model(train)
-    print(f"Observaciones: {len(observations)}")
-    print(f"Train: {len(train)} | Test: {len(test)}")
-    print(f"Estados aprendidos: {len(probabilities)}")
-    print(f"Baseline test: {baseline_accuracy(test):.2f}%")
+    folds = build_fold_ranges(candles)
+    all_results = {str(t): {"trades": 0, "wins": 0} for t in THRESHOLDS}
+    fold_results = []
 
-    evaluations = [evaluate(test, probabilities, threshold) for threshold in (0.55, 0.60, 0.65, 0.70)]
+    for index, (train_start, train_end, test_end) in enumerate(folds, start=1):
+        train = observations_in_range(observations, train_start, train_end)
+        test = observations_in_range(observations, train_end, test_end)
+
+        probabilities, raw_stats = fit_model(train)
+        baseline = baseline_accuracy(test)
+        evaluations = [evaluate(test, probabilities, threshold) for threshold in THRESHOLDS]
+
+        fold = {
+            "fold": index,
+            "train_start": datetime.fromtimestamp(train_start / 1000, timezone.utc).isoformat(),
+            "train_end": datetime.fromtimestamp(train_end / 1000, timezone.utc).isoformat(),
+            "test_end": datetime.fromtimestamp(test_end / 1000, timezone.utc).isoformat(),
+            "train_observations": len(train),
+            "test_observations": len(test),
+            "baseline_test_accuracy": round(baseline, 2),
+            "train_state_count": len(raw_stats),
+            "usable_state_count": len(probabilities),
+            "evaluations": evaluations,
+        }
+        fold_results.append(fold)
+
+        print(
+            f"Fold {index}: train={len(train):5} test={len(test):5} "
+            f"baseline={baseline:.2f}%"
+        )
+
+        for result in evaluations:
+            accumulator = all_results[str(result["threshold"])]
+            add_metric(accumulator, result)
+            print(
+                f"  threshold={result['threshold']:.2f} "
+                f"trades={result['trades']:5} "
+                f"win_rate={str(result['win_rate']):>6}%"
+            )
+
+    aggregate_evaluations = []
+    for threshold in THRESHOLDS:
+        item = all_results[str(threshold)]
+        aggregate_evaluations.append({
+            "threshold": threshold,
+            "trades": item["trades"],
+            "wins": item["wins"],
+            "win_rate": round(item["wins"] / item["trades"] * 100.0, 2) if item["trades"] else None,
+        })
+
+    baseline_values = [fold["baseline_test_accuracy"] for fold in fold_results]
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "symbol": SYMBOL,
         "interval": INTERVAL,
         "days": DAYS,
-        "train_ratio": TRAIN_RATIO,
+        "method": "walk_forward",
+        "train_days": TRAIN_DAYS,
+        "test_days": TEST_DAYS,
+        "step_days": STEP_DAYS,
         "min_train_samples": MIN_TRAIN_SAMPLES,
         "samples_1m": len(rows),
+        "candles_15m": len(candles),
         "observations": len(observations),
-        "train_observations": len(train),
-        "test_observations": len(test),
-        "baseline_test_accuracy": round(baseline_accuracy(test), 2),
+        "folds": len(fold_results),
+        "average_fold_baseline_accuracy": round(sum(baseline_values) / len(baseline_values), 2) if baseline_values else None,
         "model": "minute_from_15m_open + current_move_bucket",
-        "evaluations": evaluations,
-        "train_state_count": len(raw_stats),
-        "usable_state_count": len(probabilities),
+        "evaluations": aggregate_evaluations,
+        "fold_results": fold_results,
+        "notes": [
+            "Train/test are separated by complete 15m candles.",
+            "minute=1 uses the close of the first 1m candle inside the 15m candle.",
+            "This backtest measures direction prediction only; it does not include Polymarket prices, fees, slippage, or execution.",
+        ],
     }
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
         json.dump(output, file, indent=2, ensure_ascii=False)
 
-    print("\nRESULTADOS")
+    print("\nRESULTADOS AGREGADOS")
     print("=" * 60)
-    for result in evaluations:
+    for result in aggregate_evaluations:
         print(
             f"threshold={result['threshold']:.2f} "
             f"trades={result['trades']:5} "
