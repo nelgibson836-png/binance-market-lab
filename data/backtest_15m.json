@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T09:43:53.888144+00:00",
+  "generated_at": "2026-09-14T10:07:19.247915+00:00",
   "symbol": "BTCUSDT",
   "interval": "1m",
   "days": 60,
@@ -12,279 +12,279 @@
   "candles_15m": 5759,
   "observations": 74867,
   "folds": 5,
-  "average_fold_baseline_accuracy": 74.74,
+  "average_fold_baseline_accuracy": 74.91,
   "model": "minute_from_15m_open + current_move_bucket",
   "evaluations": [
     {
       "threshold": 0.55,
-      "trades": 38196,
-      "wins": 27973,
-      "win_rate": 73.24
+      "trades": 38381,
+      "wins": 28105,
+      "win_rate": 73.23
     },
     {
       "threshold": 0.6,
-      "trades": 34190,
-      "wins": 25683,
-      "win_rate": 75.12
+      "trades": 33714,
+      "wins": 25397,
+      "win_rate": 75.33
     },
     {
       "threshold": 0.65,
-      "trades": 28332,
-      "wins": 21992,
-      "win_rate": 77.62
+      "trades": 28234,
+      "wins": 21961,
+      "win_rate": 77.78
     },
     {
       "threshold": 0.7,
-      "trades": 21801,
-      "wins": 17598,
-      "win_rate": 80.72
+      "trades": 22027,
+      "wins": 17739,
+      "win_rate": 80.53
     }
   ],
   "fold_results": [
     {
       "fold": 1,
-      "train_start": "2026-07-15T09:45:00+00:00",
-      "train_end": "2026-08-05T09:45:00+00:00",
-      "test_end": "2026-08-12T09:45:00+00:00",
+      "train_start": "2026-07-16T10:15:00+00:00",
+      "train_end": "2026-08-06T10:15:00+00:00",
+      "test_end": "2026-08-13T10:15:00+00:00",
       "train_observations": 26208,
       "test_observations": 8736,
-      "baseline_test_accuracy": 76.2,
+      "baseline_test_accuracy": 76.37,
       "train_state_count": 130,
       "usable_state_count": 74,
       "evaluations": [
         {
           "threshold": 0.55,
-          "trades": 8423,
-          "wins": 6387,
-          "win_rate": 75.83,
+          "trades": 8433,
+          "wins": 6406,
+          "win_rate": 75.96,
           "by_minute": {
             "1": {
-              "trades": 661,
-              "win_rate": 59.0
+              "trades": 658,
+              "win_rate": 60.33
             },
             "2": {
               "trades": 650,
-              "win_rate": 61.69
+              "win_rate": 62.31
             },
             "3": {
-              "trades": 669,
-              "win_rate": 65.62
+              "trades": 668,
+              "win_rate": 66.62
             },
             "4": {
-              "trades": 663,
-              "win_rate": 66.52
+              "trades": 664,
+              "win_rate": 67.47
             },
             "5": {
-              "trades": 657,
-              "win_rate": 75.65
+              "trades": 658,
+              "win_rate": 75.23
             },
             "6": {
-              "trades": 655,
-              "win_rate": 75.57
+              "trades": 656,
+              "win_rate": 75.61
             },
             "7": {
               "trades": 653,
-              "win_rate": 78.41
+              "win_rate": 77.95
             },
             "8": {
-              "trades": 645,
-              "win_rate": 78.6
+              "trades": 647,
+              "win_rate": 78.21
             },
             "9": {
               "trades": 641,
-              "win_rate": 80.66
+              "win_rate": 80.81
             },
             "10": {
-              "trades": 638,
-              "win_rate": 84.17
+              "trades": 639,
+              "win_rate": 83.57
             },
             "11": {
-              "trades": 629,
-              "win_rate": 86.01
+              "trades": 632,
+              "win_rate": 85.13
             },
             "12": {
-              "trades": 631,
-              "win_rate": 86.21
+              "trades": 632,
+              "win_rate": 86.23
             },
             "13": {
-              "trades": 631,
-              "win_rate": 89.7
+              "trades": 635,
+              "win_rate": 89.76
             }
           }
         },
         {
           "threshold": 0.6,
-          "trades": 7292,
+          "trades": 7289,
           "wins": 5721,
-          "win_rate": 78.46,
+          "win_rate": 78.49,
           "by_minute": {
             "1": {
-              "trades": 61,
-              "win_rate": 73.77
+              "trades": 51,
+              "win_rate": 72.55
             },
             "2": {
-              "trades": 119,
-              "win_rate": 67.23
+              "trades": 113,
+              "win_rate": 70.8
             },
             "3": {
-              "trades": 669,
-              "win_rate": 65.62
+              "trades": 668,
+              "win_rate": 66.62
             },
             "4": {
-              "trades": 663,
-              "win_rate": 66.52
+              "trades": 664,
+              "win_rate": 67.47
             },
             "5": {
-              "trades": 657,
-              "win_rate": 75.65
+              "trades": 658,
+              "win_rate": 75.23
             },
             "6": {
-              "trades": 655,
-              "win_rate": 75.57
+              "trades": 656,
+              "win_rate": 75.61
             },
             "7": {
               "trades": 653,
-              "win_rate": 78.41
+              "win_rate": 77.95
             },
             "8": {
-              "trades": 645,
-              "win_rate": 78.6
+              "trades": 647,
+              "win_rate": 78.21
             },
             "9": {
               "trades": 641,
-              "win_rate": 80.66
+              "win_rate": 80.81
             },
             "10": {
-              "trades": 638,
-              "win_rate": 84.17
+              "trades": 639,
+              "win_rate": 83.57
             },
             "11": {
-              "trades": 629,
-              "win_rate": 86.01
+              "trades": 632,
+              "win_rate": 85.13
             },
             "12": {
-              "trades": 631,
-              "win_rate": 86.21
+              "trades": 632,
+              "win_rate": 86.23
             },
             "13": {
-              "trades": 631,
-              "win_rate": 89.7
+              "trades": 635,
+              "win_rate": 89.76
             }
           }
         },
         {
           "threshold": 0.65,
-          "trades": 5635,
-          "wins": 4646,
-          "win_rate": 82.45,
+          "trades": 5844,
+          "wins": 4786,
+          "win_rate": 81.9,
           "by_minute": {
             "1": {
-              "trades": 61,
-              "win_rate": 73.77
+              "trades": 51,
+              "win_rate": 72.55
             },
             "2": {
-              "trades": 119,
-              "win_rate": 67.23
+              "trades": 113,
+              "win_rate": 70.8
             },
             "3": {
-              "trades": 168,
-              "win_rate": 79.76
+              "trades": 161,
+              "win_rate": 79.5
             },
             "4": {
-              "trades": 177,
-              "win_rate": 83.62
+              "trades": 182,
+              "win_rate": 82.97
             },
             "5": {
-              "trades": 197,
-              "win_rate": 86.29
+              "trades": 202,
+              "win_rate": 86.14
             },
             "6": {
-              "trades": 445,
-              "win_rate": 77.53
+              "trades": 656,
+              "win_rate": 75.61
             },
             "7": {
               "trades": 653,
-              "win_rate": 78.41
+              "win_rate": 77.95
             },
             "8": {
-              "trades": 645,
-              "win_rate": 78.6
+              "trades": 647,
+              "win_rate": 78.21
             },
             "9": {
               "trades": 641,
-              "win_rate": 80.66
+              "win_rate": 80.81
             },
             "10": {
-              "trades": 638,
-              "win_rate": 84.17
+              "trades": 639,
+              "win_rate": 83.57
             },
             "11": {
-              "trades": 629,
-              "win_rate": 86.01
+              "trades": 632,
+              "win_rate": 85.13
             },
             "12": {
-              "trades": 631,
-              "win_rate": 86.21
+              "trades": 632,
+              "win_rate": 86.23
             },
             "13": {
-              "trades": 631,
-              "win_rate": 89.7
+              "trades": 635,
+              "win_rate": 89.76
             }
           }
         },
         {
           "threshold": 0.7,
-          "trades": 3882,
-          "wins": 3342,
-          "win_rate": 86.09,
+          "trades": 3897,
+          "wins": 3340,
+          "win_rate": 85.71,
           "by_minute": {
             "2": {
-              "trades": 70,
-              "win_rate": 61.43
+              "trades": 61,
+              "win_rate": 65.57
             },
             "3": {
-              "trades": 168,
-              "win_rate": 79.76
+              "trades": 161,
+              "win_rate": 79.5
             },
             "4": {
-              "trades": 177,
-              "win_rate": 83.62
+              "trades": 182,
+              "win_rate": 82.97
             },
             "5": {
-              "trades": 197,
-              "win_rate": 86.29
+              "trades": 202,
+              "win_rate": 86.14
             },
             "6": {
-              "trades": 212,
-              "win_rate": 86.79
+              "trades": 220,
+              "win_rate": 85.91
             },
             "7": {
-              "trades": 221,
-              "win_rate": 85.52
+              "trades": 233,
+              "win_rate": 82.4
             },
             "8": {
-              "trades": 243,
-              "win_rate": 86.83
+              "trades": 240,
+              "win_rate": 85.42
             },
             "9": {
-              "trades": 253,
-              "win_rate": 88.93
+              "trades": 251,
+              "win_rate": 89.24
             },
             "10": {
-              "trades": 450,
-              "win_rate": 86.0
+              "trades": 448,
+              "win_rate": 85.71
             },
             "11": {
-              "trades": 629,
-              "win_rate": 86.01
+              "trades": 632,
+              "win_rate": 85.13
             },
             "12": {
-              "trades": 631,
-              "win_rate": 86.21
+              "trades": 632,
+              "win_rate": 86.23
             },
             "13": {
-              "trades": 631,
-              "win_rate": 89.7
+              "trades": 635,
+              "win_rate": 89.76
             }
           }
         }
@@ -292,244 +292,244 @@
     },
     {
       "fold": 2,
-      "train_start": "2026-07-22T09:45:00+00:00",
-      "train_end": "2026-08-12T09:45:00+00:00",
-      "test_end": "2026-08-19T09:45:00+00:00",
+      "train_start": "2026-07-23T10:15:00+00:00",
+      "train_end": "2026-08-13T10:15:00+00:00",
+      "test_end": "2026-08-20T10:15:00+00:00",
       "train_observations": 26208,
       "test_observations": 8736,
-      "baseline_test_accuracy": 73.41,
-      "train_state_count": 129,
+      "baseline_test_accuracy": 73.84,
+      "train_state_count": 130,
       "usable_state_count": 72,
       "evaluations": [
         {
           "threshold": 0.55,
-          "trades": 8452,
-          "wins": 6164,
-          "win_rate": 72.93,
+          "trades": 8106,
+          "wins": 5890,
+          "win_rate": 72.66,
           "by_minute": {
             "1": {
-              "trades": 662,
-              "win_rate": 55.29
+              "trades": 643,
+              "win_rate": 54.12
             },
             "2": {
-              "trades": 647,
-              "win_rate": 59.81
+              "trades": 619,
+              "win_rate": 60.58
             },
             "3": {
-              "trades": 629,
-              "win_rate": 67.89
+              "trades": 596,
+              "win_rate": 66.28
             },
             "4": {
-              "trades": 664,
-              "win_rate": 68.07
+              "trades": 650,
+              "win_rate": 68.0
             },
             "5": {
-              "trades": 661,
-              "win_rate": 69.89
+              "trades": 643,
+              "win_rate": 69.21
             },
             "6": {
-              "trades": 662,
-              "win_rate": 73.26
+              "trades": 639,
+              "win_rate": 73.24
             },
             "7": {
-              "trades": 659,
-              "win_rate": 73.75
+              "trades": 636,
+              "win_rate": 74.53
             },
             "8": {
-              "trades": 655,
-              "win_rate": 76.18
+              "trades": 627,
+              "win_rate": 76.4
             },
             "9": {
-              "trades": 647,
-              "win_rate": 78.21
+              "trades": 620,
+              "win_rate": 77.74
             },
             "10": {
-              "trades": 642,
-              "win_rate": 78.19
+              "trades": 610,
+              "win_rate": 78.2
             },
             "11": {
-              "trades": 644,
-              "win_rate": 79.19
+              "trades": 610,
+              "win_rate": 79.34
             },
             "12": {
-              "trades": 642,
-              "win_rate": 83.02
+              "trades": 608,
+              "win_rate": 82.73
             },
             "13": {
-              "trades": 638,
-              "win_rate": 86.05
+              "trades": 605,
+              "win_rate": 85.62
             }
           }
         },
         {
           "threshold": 0.6,
-          "trades": 7280,
-          "wins": 5487,
-          "win_rate": 75.37,
+          "trades": 6997,
+          "wins": 5258,
+          "win_rate": 75.15,
           "by_minute": {
             "1": {
-              "trades": 52,
-              "win_rate": 51.92
+              "trades": 63,
+              "win_rate": 52.38
             },
             "2": {
-              "trades": 362,
-              "win_rate": 62.43
+              "trades": 351,
+              "win_rate": 62.68
             },
             "3": {
-              "trades": 352,
-              "win_rate": 71.02
+              "trades": 335,
+              "win_rate": 69.55
             },
             "4": {
-              "trades": 664,
-              "win_rate": 68.07
+              "trades": 650,
+              "win_rate": 68.0
             },
             "5": {
-              "trades": 661,
-              "win_rate": 69.89
+              "trades": 643,
+              "win_rate": 69.21
             },
             "6": {
-              "trades": 662,
-              "win_rate": 73.26
+              "trades": 639,
+              "win_rate": 73.24
             },
             "7": {
-              "trades": 659,
-              "win_rate": 73.75
+              "trades": 636,
+              "win_rate": 74.53
             },
             "8": {
-              "trades": 655,
-              "win_rate": 76.18
+              "trades": 627,
+              "win_rate": 76.4
             },
             "9": {
-              "trades": 647,
-              "win_rate": 78.21
+              "trades": 620,
+              "win_rate": 77.74
             },
             "10": {
-              "trades": 642,
-              "win_rate": 78.19
+              "trades": 610,
+              "win_rate": 78.2
             },
             "11": {
-              "trades": 644,
-              "win_rate": 79.19
+              "trades": 610,
+              "win_rate": 79.34
             },
             "12": {
-              "trades": 642,
-              "win_rate": 83.02
+              "trades": 608,
+              "win_rate": 82.73
             },
             "13": {
-              "trades": 638,
-              "win_rate": 86.05
+              "trades": 605,
+              "win_rate": 85.62
             }
           }
         },
         {
           "threshold": 0.65,
-          "trades": 6280,
-          "wins": 4844,
-          "win_rate": 77.13,
+          "trades": 6005,
+          "wins": 4627,
+          "win_rate": 77.05,
           "by_minute": {
             "1": {
-              "trades": 52,
-              "win_rate": 51.92
+              "trades": 28,
+              "win_rate": 53.57
             },
             "2": {
-              "trades": 84,
-              "win_rate": 66.67
+              "trades": 86,
+              "win_rate": 65.12
             },
             "3": {
-              "trades": 108,
-              "win_rate": 76.85
+              "trades": 102,
+              "win_rate": 77.45
             },
             "4": {
-              "trades": 186,
-              "win_rate": 78.49
+              "trades": 191,
+              "win_rate": 76.96
             },
             "5": {
-              "trades": 661,
-              "win_rate": 69.89
+              "trades": 643,
+              "win_rate": 69.21
             },
             "6": {
-              "trades": 662,
-              "win_rate": 73.26
+              "trades": 639,
+              "win_rate": 73.24
             },
             "7": {
-              "trades": 659,
-              "win_rate": 73.75
+              "trades": 636,
+              "win_rate": 74.53
             },
             "8": {
-              "trades": 655,
-              "win_rate": 76.18
+              "trades": 627,
+              "win_rate": 76.4
             },
             "9": {
-              "trades": 647,
-              "win_rate": 78.21
+              "trades": 620,
+              "win_rate": 77.74
             },
             "10": {
-              "trades": 642,
-              "win_rate": 78.19
+              "trades": 610,
+              "win_rate": 78.2
             },
             "11": {
-              "trades": 644,
-              "win_rate": 79.19
+              "trades": 610,
+              "win_rate": 79.34
             },
             "12": {
-              "trades": 642,
-              "win_rate": 83.02
+              "trades": 608,
+              "win_rate": 82.73
             },
             "13": {
-              "trades": 638,
-              "win_rate": 86.05
+              "trades": 605,
+              "win_rate": 85.62
             }
           }
         },
         {
           "threshold": 0.7,
-          "trades": 4807,
-          "wins": 3856,
-          "win_rate": 80.22,
+          "trades": 4838,
+          "wins": 3835,
+          "win_rate": 79.27,
           "by_minute": {
             "3": {
-              "trades": 108,
-              "win_rate": 76.85
+              "trades": 102,
+              "win_rate": 77.45
             },
             "4": {
-              "trades": 186,
-              "win_rate": 78.49
+              "trades": 191,
+              "win_rate": 76.96
             },
             "5": {
               "trades": 206,
-              "win_rate": 79.13
+              "win_rate": 76.21
             },
             "6": {
               "trades": 210,
-              "win_rate": 82.86
+              "win_rate": 80.95
             },
             "7": {
-              "trades": 429,
-              "win_rate": 77.62
+              "trades": 636,
+              "win_rate": 74.53
             },
             "8": {
-              "trades": 455,
-              "win_rate": 78.46
+              "trades": 440,
+              "win_rate": 78.18
             },
             "9": {
-              "trades": 647,
-              "win_rate": 78.21
+              "trades": 620,
+              "win_rate": 77.74
             },
             "10": {
-              "trades": 642,
-              "win_rate": 78.19
+              "trades": 610,
+              "win_rate": 78.2
             },
             "11": {
-              "trades": 644,
-              "win_rate": 79.19
+              "trades": 610,
+              "win_rate": 79.34
             },
             "12": {
-              "trades": 642,
-              "win_rate": 83.02
+              "trades": 608,
+              "win_rate": 82.73
             },
             "13": {
-              "trades": 638,
-              "win_rate": 86.05
+              "trades": 605,
+              "win_rate": 85.62
             }
           }
         }
@@ -537,248 +537,244 @@
     },
     {
       "fold": 3,
-      "train_start": "2026-07-29T09:45:00+00:00",
-      "train_end": "2026-08-19T09:45:00+00:00",
-      "test_end": "2026-08-26T09:45:00+00:00",
+      "train_start": "2026-07-30T10:15:00+00:00",
+      "train_end": "2026-08-20T10:15:00+00:00",
+      "test_end": "2026-08-27T10:15:00+00:00",
       "train_observations": 26208,
       "test_observations": 8736,
-      "baseline_test_accuracy": 73.96,
-      "train_state_count": 130,
+      "baseline_test_accuracy": 73.76,
+      "train_state_count": 129,
       "usable_state_count": 70,
       "evaluations": [
         {
           "threshold": 0.55,
-          "trades": 6177,
-          "wins": 4226,
-          "win_rate": 68.42,
+          "trades": 6373,
+          "wins": 4365,
+          "win_rate": 68.49,
           "by_minute": {
             "1": {
-              "trades": 471,
-              "win_rate": 52.23
+              "trades": 576,
+              "win_rate": 54.69
             },
             "2": {
-              "trades": 461,
-              "win_rate": 56.4
+              "trades": 476,
+              "win_rate": 55.46
             },
             "3": {
-              "trades": 407,
-              "win_rate": 63.39
+              "trades": 430,
+              "win_rate": 62.09
             },
             "4": {
-              "trades": 482,
-              "win_rate": 64.11
+              "trades": 494,
+              "win_rate": 63.56
             },
             "5": {
-              "trades": 554,
-              "win_rate": 64.62
+              "trades": 468,
+              "win_rate": 62.82
             },
             "6": {
-              "trades": 521,
-              "win_rate": 68.52
+              "trades": 535,
+              "win_rate": 68.04
             },
             "7": {
-              "trades": 510,
-              "win_rate": 69.22
+              "trades": 524,
+              "win_rate": 68.13
             },
             "8": {
-              "trades": 489,
-              "win_rate": 68.3
+              "trades": 505,
+              "win_rate": 68.32
             },
             "9": {
-              "trades": 486,
-              "win_rate": 69.55
+              "trades": 505,
+              "win_rate": 70.1
             },
             "10": {
-              "trades": 468,
-              "win_rate": 73.5
+              "trades": 485,
+              "win_rate": 74.23
             },
             "11": {
-              "trades": 464,
-              "win_rate": 78.66
+              "trades": 482,
+              "win_rate": 80.5
             },
             "12": {
-              "trades": 432,
-              "win_rate": 79.63
+              "trades": 449,
+              "win_rate": 81.51
             },
             "13": {
-              "trades": 432,
-              "win_rate": 83.33
+              "trades": 444,
+              "win_rate": 84.91
             }
           }
         },
         {
           "threshold": 0.6,
-          "trades": 5644,
-          "wins": 3952,
-          "win_rate": 70.02,
+          "trades": 5734,
+          "wins": 4029,
+          "win_rate": 70.27,
           "by_minute": {
             "1": {
-              "trades": 91,
-              "win_rate": 54.95
+              "trades": 96,
+              "win_rate": 60.42
             },
             "2": {
-              "trades": 308,
-              "win_rate": 59.09
+              "trades": 317,
+              "win_rate": 58.36
             },
             "3": {
-              "trades": 407,
-              "win_rate": 63.39
+              "trades": 430,
+              "win_rate": 62.09
             },
             "4": {
-              "trades": 482,
-              "win_rate": 64.11
+              "trades": 494,
+              "win_rate": 63.56
             },
             "5": {
-              "trades": 554,
-              "win_rate": 64.62
+              "trades": 468,
+              "win_rate": 62.82
             },
             "6": {
-              "trades": 521,
-              "win_rate": 68.52
+              "trades": 535,
+              "win_rate": 68.04
             },
             "7": {
-              "trades": 510,
-              "win_rate": 69.22
+              "trades": 524,
+              "win_rate": 68.13
             },
             "8": {
-              "trades": 489,
-              "win_rate": 68.3
+              "trades": 505,
+              "win_rate": 68.32
             },
             "9": {
-              "trades": 486,
-              "win_rate": 69.55
+              "trades": 505,
+              "win_rate": 70.1
             },
             "10": {
-              "trades": 468,
-              "win_rate": 73.5
+              "trades": 485,
+              "win_rate": 74.23
             },
             "11": {
-              "trades": 464,
-              "win_rate": 78.66
+              "trades": 482,
+              "win_rate": 80.5
             },
             "12": {
-              "trades": 432,
-              "win_rate": 79.63
+              "trades": 449,
+              "win_rate": 81.51
             },
             "13": {
-              "trades": 432,
-              "win_rate": 83.33
+              "trades": 444,
+              "win_rate": 84.91
             }
           }
         },
         {
           "threshold": 0.65,
-          "trades": 5033,
-          "wins": 3600,
-          "win_rate": 71.53,
+          "trades": 4992,
+          "wins": 3607,
+          "win_rate": 72.26,
           "by_minute": {
-            "1": {
-              "trades": 91,
-              "win_rate": 54.95
-            },
             "2": {
-              "trades": 167,
-              "win_rate": 65.27
+              "trades": 170,
+              "win_rate": 66.47
             },
             "3": {
-              "trades": 163,
-              "win_rate": 69.94
+              "trades": 173,
+              "win_rate": 68.21
             },
             "4": {
-              "trades": 256,
-              "win_rate": 67.97
+              "trades": 252,
+              "win_rate": 67.86
             },
             "5": {
-              "trades": 554,
-              "win_rate": 64.62
+              "trades": 468,
+              "win_rate": 62.82
             },
             "6": {
-              "trades": 521,
-              "win_rate": 68.52
+              "trades": 535,
+              "win_rate": 68.04
             },
             "7": {
-              "trades": 510,
-              "win_rate": 69.22
+              "trades": 524,
+              "win_rate": 68.13
             },
             "8": {
-              "trades": 489,
-              "win_rate": 68.3
+              "trades": 505,
+              "win_rate": 68.32
             },
             "9": {
-              "trades": 486,
-              "win_rate": 69.55
+              "trades": 505,
+              "win_rate": 70.1
             },
             "10": {
-              "trades": 468,
-              "win_rate": 73.5
+              "trades": 485,
+              "win_rate": 74.23
             },
             "11": {
-              "trades": 464,
-              "win_rate": 78.66
+              "trades": 482,
+              "win_rate": 80.5
             },
             "12": {
-              "trades": 432,
-              "win_rate": 79.63
+              "trades": 449,
+              "win_rate": 81.51
             },
             "13": {
-              "trades": 432,
-              "win_rate": 83.33
+              "trades": 444,
+              "win_rate": 84.91
             }
           }
         },
         {
           "threshold": 0.7,
-          "trades": 4299,
-          "wins": 3171,
-          "win_rate": 73.76,
+          "trades": 4333,
+          "wins": 3224,
+          "win_rate": 74.41,
           "by_minute": {
             "2": {
-              "trades": 85,
-              "win_rate": 64.71
+              "trades": 84,
+              "win_rate": 64.29
             },
             "3": {
-              "trades": 163,
-              "win_rate": 69.94
+              "trades": 173,
+              "win_rate": 68.21
             },
             "4": {
-              "trades": 256,
-              "win_rate": 67.97
+              "trades": 252,
+              "win_rate": 67.86
             },
             "5": {
-              "trades": 352,
-              "win_rate": 69.03
+              "trades": 264,
+              "win_rate": 68.56
             },
             "6": {
-              "trades": 330,
-              "win_rate": 73.03
+              "trades": 337,
+              "win_rate": 73.59
             },
             "7": {
-              "trades": 423,
-              "win_rate": 71.63
+              "trades": 437,
+              "win_rate": 70.25
             },
             "8": {
-              "trades": 408,
-              "win_rate": 71.08
+              "trades": 421,
+              "win_rate": 71.26
             },
             "9": {
-              "trades": 486,
-              "win_rate": 69.55
+              "trades": 505,
+              "win_rate": 70.1
             },
             "10": {
-              "trades": 468,
-              "win_rate": 73.5
+              "trades": 485,
+              "win_rate": 74.23
             },
             "11": {
-              "trades": 464,
-              "win_rate": 78.66
+              "trades": 482,
+              "win_rate": 80.5
             },
             "12": {
-              "trades": 432,
-              "win_rate": 79.63
+              "trades": 449,
+              "win_rate": 81.51
             },
             "13": {
-              "trades": 432,
-              "win_rate": 83.33
+              "trades": 444,
+              "win_rate": 84.91
             }
           }
         }
@@ -786,244 +782,244 @@
     },
     {
       "fold": 4,
-      "train_start": "2026-08-05T09:45:00+00:00",
-      "train_end": "2026-08-26T09:45:00+00:00",
-      "test_end": "2026-09-02T09:45:00+00:00",
+      "train_start": "2026-08-06T10:15:00+00:00",
+      "train_end": "2026-08-27T10:15:00+00:00",
+      "test_end": "2026-09-03T10:15:00+00:00",
       "train_observations": 26208,
       "test_observations": 8736,
-      "baseline_test_accuracy": 75.26,
+      "baseline_test_accuracy": 74.92,
       "train_state_count": 130,
-      "usable_state_count": 75,
+      "usable_state_count": 76,
       "evaluations": [
         {
           "threshold": 0.55,
-          "trades": 7526,
-          "wins": 5531,
-          "win_rate": 73.49,
+          "trades": 7806,
+          "wins": 5670,
+          "win_rate": 72.64,
           "by_minute": {
             "1": {
-              "trades": 374,
-              "win_rate": 60.96
+              "trades": 631,
+              "win_rate": 59.27
             },
             "2": {
-              "trades": 606,
-              "win_rate": 61.22
+              "trades": 658,
+              "win_rate": 63.07
             },
             "3": {
-              "trades": 645,
-              "win_rate": 68.99
+              "trades": 646,
+              "win_rate": 69.2
             },
             "4": {
-              "trades": 631,
-              "win_rate": 69.73
+              "trades": 629,
+              "win_rate": 68.68
             },
             "5": {
-              "trades": 626,
-              "win_rate": 68.85
+              "trades": 624,
+              "win_rate": 68.75
             },
             "6": {
-              "trades": 614,
-              "win_rate": 70.2
+              "trades": 611,
+              "win_rate": 70.05
             },
             "7": {
-              "trades": 602,
-              "win_rate": 73.26
+              "trades": 590,
+              "win_rate": 72.88
             },
             "8": {
-              "trades": 599,
-              "win_rate": 75.29
+              "trades": 596,
+              "win_rate": 75.34
             },
             "9": {
-              "trades": 588,
-              "win_rate": 76.7
+              "trades": 579,
+              "win_rate": 76.68
             },
             "10": {
-              "trades": 569,
-              "win_rate": 78.38
+              "trades": 568,
+              "win_rate": 78.17
             },
             "11": {
               "trades": 563,
-              "win_rate": 81.88
+              "win_rate": 80.11
             },
             "12": {
               "trades": 562,
-              "win_rate": 83.27
+              "win_rate": 82.21
             },
             "13": {
-              "trades": 547,
-              "win_rate": 85.37
+              "trades": 549,
+              "win_rate": 84.7
             }
           }
         },
         {
           "threshold": 0.6,
-          "trades": 6823,
-          "wins": 5129,
-          "win_rate": 75.17,
+          "trades": 6666,
+          "wins": 4997,
+          "win_rate": 74.96,
           "by_minute": {
             "1": {
-              "trades": 72,
-              "win_rate": 72.22
+              "trades": 78,
+              "win_rate": 66.67
             },
             "2": {
-              "trades": 205,
-              "win_rate": 70.73
+              "trades": 257,
+              "win_rate": 72.76
             },
             "3": {
-              "trades": 645,
-              "win_rate": 68.99
+              "trades": 460,
+              "win_rate": 70.43
             },
             "4": {
-              "trades": 631,
-              "win_rate": 69.73
+              "trades": 629,
+              "win_rate": 68.68
             },
             "5": {
-              "trades": 626,
-              "win_rate": 68.85
+              "trades": 624,
+              "win_rate": 68.75
             },
             "6": {
-              "trades": 614,
-              "win_rate": 70.2
+              "trades": 611,
+              "win_rate": 70.05
             },
             "7": {
-              "trades": 602,
-              "win_rate": 73.26
+              "trades": 590,
+              "win_rate": 72.88
             },
             "8": {
-              "trades": 599,
-              "win_rate": 75.29
+              "trades": 596,
+              "win_rate": 75.34
             },
             "9": {
-              "trades": 588,
-              "win_rate": 76.7
+              "trades": 579,
+              "win_rate": 76.68
             },
             "10": {
-              "trades": 569,
-              "win_rate": 78.38
+              "trades": 568,
+              "win_rate": 78.17
             },
             "11": {
               "trades": 563,
-              "win_rate": 81.88
+              "win_rate": 80.11
             },
             "12": {
               "trades": 562,
-              "win_rate": 83.27
+              "win_rate": 82.21
             },
             "13": {
-              "trades": 547,
-              "win_rate": 85.37
+              "trades": 549,
+              "win_rate": 84.7
             }
           }
         },
         {
           "threshold": 0.65,
-          "trades": 5988,
-          "wins": 4582,
-          "win_rate": 76.52,
+          "trades": 6136,
+          "wins": 4668,
+          "win_rate": 76.08,
           "by_minute": {
             "2": {
-              "trades": 114,
-              "win_rate": 66.67
+              "trades": 257,
+              "win_rate": 72.76
             },
             "3": {
-              "trades": 446,
-              "win_rate": 70.63
+              "trades": 460,
+              "win_rate": 70.43
             },
             "4": {
-              "trades": 299,
-              "win_rate": 76.25
+              "trades": 314,
+              "win_rate": 75.48
             },
             "5": {
-              "trades": 485,
-              "win_rate": 71.55
+              "trades": 487,
+              "win_rate": 71.25
             },
             "6": {
-              "trades": 614,
-              "win_rate": 70.2
+              "trades": 611,
+              "win_rate": 70.05
             },
             "7": {
-              "trades": 602,
-              "win_rate": 73.26
+              "trades": 590,
+              "win_rate": 72.88
             },
             "8": {
-              "trades": 599,
-              "win_rate": 75.29
+              "trades": 596,
+              "win_rate": 75.34
             },
             "9": {
-              "trades": 588,
-              "win_rate": 76.7
+              "trades": 579,
+              "win_rate": 76.68
             },
             "10": {
-              "trades": 569,
-              "win_rate": 78.38
+              "trades": 568,
+              "win_rate": 78.17
             },
             "11": {
               "trades": 563,
-              "win_rate": 81.88
+              "win_rate": 80.11
             },
             "12": {
               "trades": 562,
-              "win_rate": 83.27
+              "win_rate": 82.21
             },
             "13": {
-              "trades": 547,
-              "win_rate": 85.37
+              "trades": 549,
+              "win_rate": 84.7
             }
           }
         },
         {
           "threshold": 0.7,
-          "trades": 4717,
-          "wins": 3777,
-          "win_rate": 80.07,
+          "trades": 4849,
+          "wins": 3855,
+          "win_rate": 79.5,
           "by_minute": {
             "2": {
-              "trades": 35,
-              "win_rate": 71.43
+              "trades": 82,
+              "win_rate": 80.49
             },
             "3": {
-              "trades": 291,
-              "win_rate": 72.85
+              "trades": 299,
+              "win_rate": 73.58
             },
             "4": {
-              "trades": 219,
-              "win_rate": 75.8
+              "trades": 314,
+              "win_rate": 75.48
             },
             "5": {
-              "trades": 333,
-              "win_rate": 77.48
+              "trades": 336,
+              "win_rate": 77.38
             },
             "6": {
-              "trades": 331,
-              "win_rate": 79.15
+              "trades": 332,
+              "win_rate": 78.92
             },
             "7": {
-              "trades": 462,
-              "win_rate": 75.97
+              "trades": 454,
+              "win_rate": 75.55
             },
             "8": {
-              "trades": 467,
-              "win_rate": 79.01
+              "trades": 460,
+              "win_rate": 79.13
             },
             "9": {
-              "trades": 459,
-              "win_rate": 80.83
+              "trades": 449,
+              "win_rate": 80.18
             },
             "10": {
-              "trades": 448,
-              "win_rate": 81.92
+              "trades": 449,
+              "win_rate": 81.29
             },
             "11": {
               "trades": 563,
-              "win_rate": 81.88
+              "win_rate": 80.11
             },
             "12": {
               "trades": 562,
-              "win_rate": 83.27
+              "win_rate": 82.21
             },
             "13": {
-              "trades": 547,
-              "win_rate": 85.37
+              "trades": 549,
+              "win_rate": 84.7
             }
           }
         }
@@ -1031,244 +1027,244 @@
     },
     {
       "fold": 5,
-      "train_start": "2026-08-12T09:45:00+00:00",
-      "train_end": "2026-09-02T09:45:00+00:00",
-      "test_end": "2026-09-09T09:45:00+00:00",
+      "train_start": "2026-08-13T10:15:00+00:00",
+      "train_end": "2026-09-03T10:15:00+00:00",
+      "test_end": "2026-09-10T10:15:00+00:00",
       "train_observations": 26208,
       "test_observations": 8736,
-      "baseline_test_accuracy": 74.89,
+      "baseline_test_accuracy": 75.68,
       "train_state_count": 130,
-      "usable_state_count": 81,
+      "usable_state_count": 82,
       "evaluations": [
         {
           "threshold": 0.55,
-          "trades": 7618,
-          "wins": 5665,
-          "win_rate": 74.36,
+          "trades": 7663,
+          "wins": 5774,
+          "win_rate": 75.35,
           "by_minute": {
             "1": {
-              "trades": 125,
-              "win_rate": 60.8
+              "trades": 110,
+              "win_rate": 65.45
             },
             "2": {
               "trades": 660,
-              "win_rate": 61.97
+              "win_rate": 64.09
             },
             "3": {
-              "trades": 654,
-              "win_rate": 67.28
+              "trades": 652,
+              "win_rate": 68.87
             },
             "4": {
-              "trades": 638,
-              "win_rate": 67.4
+              "trades": 641,
+              "win_rate": 68.49
             },
             "5": {
-              "trades": 636,
-              "win_rate": 71.54
+              "trades": 641,
+              "win_rate": 72.07
             },
             "6": {
               "trades": 630,
-              "win_rate": 73.02
+              "win_rate": 72.7
             },
             "7": {
-              "trades": 610,
-              "win_rate": 74.59
+              "trades": 622,
+              "win_rate": 76.53
             },
             "8": {
-              "trades": 610,
-              "win_rate": 76.23
+              "trades": 614,
+              "win_rate": 76.55
             },
             "9": {
-              "trades": 594,
-              "win_rate": 77.27
+              "trades": 599,
+              "win_rate": 77.46
             },
             "10": {
-              "trades": 615,
-              "win_rate": 80.49
+              "trades": 617,
+              "win_rate": 81.04
             },
             "11": {
-              "trades": 584,
-              "win_rate": 80.48
+              "trades": 616,
+              "win_rate": 81.98
             },
             "12": {
-              "trades": 633,
-              "win_rate": 82.31
+              "trades": 634,
+              "win_rate": 82.81
             },
             "13": {
-              "trades": 629,
-              "win_rate": 84.26
+              "trades": 627,
+              "win_rate": 84.69
             }
           }
         },
         {
           "threshold": 0.6,
-          "trades": 7151,
-          "wins": 5394,
-          "win_rate": 75.43,
+          "trades": 7028,
+          "wins": 5392,
+          "win_rate": 76.72,
           "by_minute": {
             "1": {
-              "trades": 125,
-              "win_rate": 60.8
+              "trades": 110,
+              "win_rate": 65.45
             },
             "2": {
-              "trades": 193,
-              "win_rate": 71.5
+              "trades": 189,
+              "win_rate": 74.07
             },
             "3": {
-              "trades": 654,
-              "win_rate": 67.28
+              "trades": 652,
+              "win_rate": 68.87
             },
             "4": {
-              "trades": 638,
-              "win_rate": 67.4
+              "trades": 641,
+              "win_rate": 68.49
             },
             "5": {
-              "trades": 636,
-              "win_rate": 71.54
+              "trades": 477,
+              "win_rate": 76.1
             },
             "6": {
               "trades": 630,
-              "win_rate": 73.02
+              "win_rate": 72.7
             },
             "7": {
-              "trades": 610,
-              "win_rate": 74.59
+              "trades": 622,
+              "win_rate": 76.53
             },
             "8": {
-              "trades": 610,
-              "win_rate": 76.23
+              "trades": 614,
+              "win_rate": 76.55
             },
             "9": {
-              "trades": 594,
-              "win_rate": 77.27
+              "trades": 599,
+              "win_rate": 77.46
             },
             "10": {
-              "trades": 615,
-              "win_rate": 80.49
+              "trades": 617,
+              "win_rate": 81.04
             },
             "11": {
-              "trades": 584,
-              "win_rate": 80.48
+              "trades": 616,
+              "win_rate": 81.98
             },
             "12": {
-              "trades": 633,
-              "win_rate": 82.31
+              "trades": 634,
+              "win_rate": 82.81
             },
             "13": {
-              "trades": 629,
-              "win_rate": 84.26
+              "trades": 627,
+              "win_rate": 84.69
             }
           }
         },
         {
           "threshold": 0.65,
-          "trades": 5396,
-          "wins": 4320,
-          "win_rate": 80.06,
+          "trades": 5257,
+          "wins": 4273,
+          "win_rate": 81.28,
           "by_minute": {
             "2": {
-              "trades": 193,
-              "win_rate": 71.5
+              "trades": 189,
+              "win_rate": 74.07
             },
             "3": {
-              "trades": 438,
-              "win_rate": 71.23
+              "trades": 420,
+              "win_rate": 73.1
             },
             "4": {
-              "trades": 257,
-              "win_rate": 77.82
+              "trades": 251,
+              "win_rate": 78.49
             },
             "5": {
-              "trades": 297,
-              "win_rate": 82.49
+              "trades": 296,
+              "win_rate": 83.11
             },
             "6": {
-              "trades": 477,
-              "win_rate": 77.57
+              "trades": 468,
+              "win_rate": 77.78
             },
             "7": {
-              "trades": 477,
-              "win_rate": 78.41
+              "trades": 323,
+              "win_rate": 87.0
             },
             "8": {
-              "trades": 472,
-              "win_rate": 80.3
+              "trades": 481,
+              "win_rate": 80.46
             },
             "9": {
-              "trades": 467,
-              "win_rate": 81.8
+              "trades": 477,
+              "win_rate": 81.34
             },
             "10": {
-              "trades": 472,
-              "win_rate": 84.53
+              "trades": 475,
+              "win_rate": 84.63
             },
             "11": {
-              "trades": 584,
-              "win_rate": 80.48
+              "trades": 616,
+              "win_rate": 81.98
             },
             "12": {
-              "trades": 633,
-              "win_rate": 82.31
+              "trades": 634,
+              "win_rate": 82.81
             },
             "13": {
-              "trades": 629,
-              "win_rate": 84.26
+              "trades": 627,
+              "win_rate": 84.69
             }
           }
         },
         {
           "threshold": 0.7,
-          "trades": 4096,
-          "wins": 3452,
-          "win_rate": 84.28,
+          "trades": 4110,
+          "wins": 3485,
+          "win_rate": 84.79,
           "by_minute": {
             "2": {
               "trades": 59,
-              "win_rate": 71.19
+              "win_rate": 72.88
             },
             "3": {
-              "trades": 165,
-              "win_rate": 80.0
+              "trades": 158,
+              "win_rate": 80.38
             },
             "4": {
-              "trades": 257,
-              "win_rate": 77.82
+              "trades": 251,
+              "win_rate": 78.49
             },
             "5": {
-              "trades": 297,
-              "win_rate": 82.49
+              "trades": 296,
+              "win_rate": 83.11
             },
             "6": {
-              "trades": 306,
-              "win_rate": 84.97
+              "trades": 302,
+              "win_rate": 84.77
             },
             "7": {
-              "trades": 318,
-              "win_rate": 86.79
+              "trades": 323,
+              "win_rate": 87.0
             },
             "8": {
-              "trades": 326,
-              "win_rate": 85.89
+              "trades": 333,
+              "win_rate": 85.59
             },
             "9": {
-              "trades": 319,
-              "win_rate": 88.09
+              "trades": 322,
+              "win_rate": 87.89
             },
             "10": {
-              "trades": 344,
-              "win_rate": 89.24
+              "trades": 340,
+              "win_rate": 90.29
             },
             "11": {
-              "trades": 443,
-              "win_rate": 85.33
+              "trades": 465,
+              "win_rate": 86.88
             },
             "12": {
-              "trades": 633,
-              "win_rate": 82.31
+              "trades": 634,
+              "win_rate": 82.81
             },
             "13": {
-              "trades": 629,
-              "win_rate": 84.26
+              "trades": 627,
+              "win_rate": 84.69
             }
           }
         }
