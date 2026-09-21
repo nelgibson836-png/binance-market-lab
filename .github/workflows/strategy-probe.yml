@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "17 3 * * *"
 
+concurrency:
+  group: binance-market-lab-strategy-probe.yml
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -28,6 +32,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          test -s data/strategy_probe.json
           git add data/strategy_probe.json
           git diff --cached --quiet || git commit -m "Update strategy probe"
           git push
