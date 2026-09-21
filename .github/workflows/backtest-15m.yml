@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "37 4 * * *"
 
+concurrency:
+  group: binance-market-lab-backtest-15m.yml
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -27,6 +31,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          test -s data/backtest_15m.json
           git add data/backtest_15m.json
           git diff --cached --quiet || git commit -m "Update 15m backtest"
           git push
