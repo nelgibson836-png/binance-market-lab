@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: "*/5 * * * *"
 
+concurrency:
+  group: binance-market-lab-collector.yml
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -41,6 +45,7 @@ jobs:
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
 
+          test -s data/quality_report.json
           git add data/
 
           git diff --cached --quiet || \
