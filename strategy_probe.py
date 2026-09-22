@@ -7,83 +7,48 @@ from urllib.error import HTTPError, URLError
 BASE_URL = "https://data-api.binance.vision"
 SYMBOL = "BTCUSDT"
 
-# ============================================================
-# CONFIGURACIÓN
-# ============================================================
-
 DAYS = 30
 INTERVAL = "1m"
 LIMIT = 1000
-
 OUTPUT_FILE = "data/strategy_probe.json"
 
-# Umbrales de momentum que vamos a probar
 MOMENTUM_WINDOWS = [1, 3, 5]
 MOMENTUM_THRESHOLDS = [0.05, 0.10, 0.20, 0.30, 0.50]
 
-# ============================================================
-# HTTP
-# ============================================================
 
 def get_json(path):
     request = Request(
         BASE_URL + path,
-        headers={
-            "User-Agent": "binance-market-lab/strategy-probe"
-        }
+        headers={"User-Agent": "binance-market-lab/strategy-probe"},
     )
-
     with urlopen(request, timeout=20) as response:
-        return json.loads(
-            response.read().decode("utf-8")
-        )
+        return json.loads(response.read().decode("utf-8"))
 
-# ============================================================
-# DESCARGAR HISTÓRICO
-# ============================================================
 
 def fetch_klines():
-    now_ms = int(
-        datetime.now(timezone.utc).timestamp() * 1000
-    )
-
-    start_ms = now_ms - (
-        DAYS * 24 * 60 * 60 * 1000
-    )
-
+    now_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
+    start_ms = now_ms - DAYS * 24 * 60 * 60 * 1000
     rows = []
     current_start = start_ms
 
-    print("=" * 60)
-    print("STRATEGY PROBE")
-    print("=" * 60)
-    print(f"Símbolo : {SYMBOL}")
-    print(f"Periodo : {DAYS} días")
-    print(f"Intervalo: {INTERVAL}")
-    print()
-
     while current_start < now_ms:
-
         path = (
-            f"/api/v3/klines"
-            f"?symbol={SYMBOL}"
-            f"&interval={INTERVAL}"
-            f"&startTime={current_start}"
-            f"&endTime={now_ms}"
-            f"&limit={LIMIT}"
+            f"/api/v3/klines?symbol={SYMBOL}"
+            f"&interval={INTERVAL}&startTime={current_start}"
+            f"&endTime={now_ms}&limit={LIMIT}"
         )
-
         try:
             data = get_json(path)
-
-        except (HTTPError, URLError, TimeoutError) as error:
-            print(f"Error descargando datos: {error}")
+        except (HTTPError, URLError, TimeoutError):
             raise
 
         if not data:
             break
 
         for k in data:
+            close_time = int(k[6])
+            if close_time >= now_ms:
+                continue
             rows.append({
                 "open_time": int(k[0]),
                 "open": float(k[1]),
@@ -91,423 +56,161 @@ def fetch_klines():
                 "low": float(k[3]),
                 "close": float(k[4]),
                 "volume": float(k[5]),
-                "close_time": int(k[6]),
+                "close_time": close_time,
                 "trades": int(k[8]),
+                "is_closed": True,
             })
 
         last_open_time = int(data[-1][0])
-
-        next_start = (
-            last_open_time + 60_000
-        )
-
+        next_start = last_open_time + 60_000
         if next_start <= current_start:
             break
-
         current_start = next_start
-
-        print(
-            f"Velas descargadas: {len(rows)}"
-        )
-
         time.sleep(0.08)
 
-    # eliminar duplicados
-    unique = {
-        row["open_time"]: row
-        for row in rows
-    }
-
-    rows = sorted(
-        unique.values(),
-        key=lambda x: x["open_time"]
-    )
-
-    print()
-    print(f"Total velas: {len(rows)}")
-
+    unique = {row["open_time"]: row for row in rows}
+    rows = sorted(unique.values(), key=lambda x: x["open_time"])
+    print(f"Total velas cerradas: {len(rows)}")
     return rows
 
-# ============================================================
-# UTILIDADES
-# ============================================================
 
 def pct_change(a, b):
-    if a == 0:
-        return 0.0
+    return 0.0 if a == 0 else ((b - a) / a) * 100.0
 
-    return (
-        (b - a) / a
-    ) * 100.0
-
-
-def direction(value):
-    if value > 0:
-        return "UP"
-
-    if value < 0:
-        return "DOWN"
-
-    return "FLAT"
-
-# ============================================================
-# ANÁLISIS DE MOMENTUM
-# ============================================================
 
 def analyze_momentum(rows):
-
     results = {}
-
-    closes = [
-        row["close"]
-        for row in rows
-    ]
+    closes = [row["close"] for row in rows]
 
     for window in MOMENTUM_WINDOWS:
-
         for threshold in MOMENTUM_THRESHOLDS:
-
             for side in ["UP", "DOWN"]:
-
-                key = (
-                    f"{window}m_"
-                    f"{side}_"
-                    f"{threshold:.2f}%"
-                )
+                key = f"{window}m_{side}_{threshold:.2f}%"
 
                 samples = 0
+                wins = {1: 0, 3: 0, 5: 0, 15: 0}
+                returns = {1: [], 3: [], 5: [], 15: []}
+                strategy_returns = {1: [], 3: [], 5: [], 15: []}
 
-                wins_1m = 0
-                wins_3m = 0
-                wins_5m = 0
-                wins_15m = 0
-
-                return_1m = []
-                return_3m = []
-                return_5m = []
-                return_15m = []
-
-                for i in range(
-                    window,
-                    len(rows) - 15
-                ):
-
-                    momentum = pct_change(
-                        closes[i - window],
-                        closes[i]
+                for i in range(window, len(rows) - 15):
+                    momentum = pct_change(closes[i - window], closes[i])
+                    condition = (
+                        momentum >= threshold
+                        if side == "UP"
+                        else momentum <= -threshold
                     )
-
-                    condition = False
-
-                    if side == "UP":
-                        condition = (
-                            momentum >= threshold
-                        )
-
-                    elif side == "DOWN":
-                        condition = (
-                            momentum <= -threshold
-                        )
-
                     if not condition:
                         continue
 
                     samples += 1
-
-                    r1 = pct_change(
-                        closes[i],
-                        closes[i + 1]
-                    )
-
-                    r3 = pct_change(
-                        closes[i],
-                        closes[i + 3]
-                    )
-
-                    r5 = pct_change(
-                        closes[i],
-                        closes[i + 5]
-                    )
-
-                    r15 = pct_change(
-                        closes[i],
-                        closes[i + 15]
-                    )
-
-                    return_1m.append(r1)
-                    return_3m.append(r3)
-                    return_5m.append(r5)
-                    return_15m.append(r15)
-
-                    if side == "UP":
-                        if r1 > 0:
-                            wins_1m += 1
-                        if r3 > 0:
-                            wins_3m += 1
-                        if r5 > 0:
-                            wins_5m += 1
-                        if r15 > 0:
-                            wins_15m += 1
-
-                    else:
-                        if r1 < 0:
-                            wins_1m += 1
-                        if r3 < 0:
-                            wins_3m += 1
-                        if r5 < 0:
-                            wins_5m += 1
-                        if r15 < 0:
-                            wins_15m += 1
+                    for horizon in (1, 3, 5, 15):
+                        r = pct_change(closes[i], closes[i + horizon])
+                        returns[horizon].append(r)
+                        strategy_r = r if side == "UP" else -r
+                        strategy_returns[horizon].append(strategy_r)
+                        if strategy_r > 0:
+                            wins[horizon] += 1
 
                 if samples == 0:
                     continue
 
-                results[key] = {
+                result = {
                     "window_minutes": window,
                     "side": side,
                     "threshold_percent": threshold,
                     "samples": samples,
-
-                    "win_rate_1m": round(
-                        wins_1m / samples * 100,
-                        2
-                    ),
-
-                    "win_rate_3m": round(
-                        wins_3m / samples * 100,
-                        2
-                    ),
-
-                    "win_rate_5m": round(
-                        wins_5m / samples * 100,
-                        2
-                    ),
-
-                    "win_rate_15m": round(
-                        wins_15m / samples * 100,
-                        2
-                    ),
-
-                    "avg_return_1m": round(
-                        sum(return_1m) / len(return_1m),
-                        5
-                    ),
-
-                    "avg_return_3m": round(
-                        sum(return_3m) / len(return_3m),
-                        5
-                    ),
-
-                    "avg_return_5m": round(
-                        sum(return_5m) / len(return_5m),
-                        5
-                    ),
-
-                    "avg_return_15m": round(
-                        sum(return_15m) / len(return_15m),
-                        5
-                    )
                 }
+
+                for horizon in (1, 3, 5, 15):
+                    result[f"win_rate_{horizon}m"] = round(
+                        wins[horizon] / samples * 100, 2
+                    )
+                    result[f"avg_return_{horizon}m"] = round(
+                        sum(returns[horizon]) / samples, 5
+                    )
+                    result[f"avg_strategy_return_{horizon}m"] = round(
+                        sum(strategy_returns[horizon]) / samples, 5
+                    )
+
+                results[key] = result
 
     return results
 
-# ============================================================
-# POLYMARKET-LIKE 15M ANALYSIS
-# ============================================================
 
 def analyze_15m_direction(rows):
-
-    buckets = {}
-
+    grouped = {}
     for row in rows:
-
-        open_time = row["open_time"]
-
-        # Inicio de la vela de 15 minutos
-        candle_start = (
-            open_time // 900_000
-        ) * 900_000
-
-        # Buscar índice de la vela de 15m
-        # usando división temporal
-        minute_from_start = (
-            open_time - candle_start
-        ) // 60_000
-
-        if minute_from_start < 1:
-            continue
-
-        if minute_from_start > 14:
-            continue
-
-        key = f"minute_{minute_from_start}"
-
-        if key not in buckets:
-            buckets[key] = []
-
-        buckets[key].append(row)
+        candle_start = (row["open_time"] // 900_000) * 900_000
+        grouped.setdefault(candle_start, []).append(row)
 
     results = {}
 
-    # Construimos mapa open_time
-    row_map = {
-        row["open_time"]: row
-        for row in rows
-    }
-
-    grouped = {}
-
-    for row in rows:
-
-        candle_start = (
-            row["open_time"] // 900_000
-        ) * 900_000
-
-        grouped.setdefault(
-            candle_start,
-            []
-        ).append(row)
-
-    for minute in range(1, 15):
-
+    for minute in range(1, 14):
         samples = 0
         correct = 0
 
         for candle_start, candle_rows in grouped.items():
+            candle_rows.sort(key=lambda x: x["open_time"])
 
-            candle_rows = sorted(
-                candle_rows,
-                key=lambda x: x["open_time"]
-            )
+            if len(candle_rows) != 15:
+                continue
 
-            if len(candle_rows) < 15:
+            expected_times = [
+                candle_start + i * 60_000 for i in range(15)
+            ]
+            if [r["open_time"] for r in candle_rows] != expected_times:
                 continue
 
             base = candle_rows[0]["open"]
-
-            current = candle_rows[minute]["close"]
-
+            current = candle_rows[minute - 1]["close"]
             final_close = candle_rows[14]["close"]
+            current_move = pct_change(base, current)
 
-            current_move = pct_change(
-                base,
-                current
-            )
-
-            if current_move == 0:
+            if current_move == 0 or final_close == base:
                 continue
 
-            actual = (
-                "UP"
-                if final_close > base
-                else "DOWN"
-            )
-
-            predicted = (
-                "UP"
-                if current_move > 0
-                else "DOWN"
-            )
+            actual = "UP" if final_close > base else "DOWN"
+            predicted = "UP" if current_move > 0 else "DOWN"
 
             samples += 1
+            correct += predicted == actual
 
-            if predicted == actual:
-                correct += 1
-
-        if samples > 0:
+        if samples:
             results[f"minute_{minute}"] = {
                 "minute_from_15m_open": minute,
                 "samples": samples,
-                "direction_accuracy": round(
-                    correct / samples * 100,
-                    2
-                )
+                "direction_accuracy": round(correct / samples * 100, 2),
             }
 
     return results
 
-# ============================================================
-# MAIN
-# ============================================================
 
 def main():
-
     rows = fetch_klines()
-
-    print()
-    print("Analizando momentum...")
-
     momentum = analyze_momentum(rows)
-
-    print("Analizando dirección 15m...")
-
     direction_15m = analyze_15m_direction(rows)
 
     output = {
-        "generated_at": datetime.now(
-            timezone.utc
-        ).isoformat(),
-
+        "generated_at": datetime.now(timezone.utc).isoformat(),
         "symbol": SYMBOL,
         "interval": INTERVAL,
         "days": DAYS,
         "samples": len(rows),
-
         "momentum": momentum,
-
-        "direction_15m": direction_15m
+        "direction_15m": direction_15m,
+        "notes": [
+            "Only closed 1m candles are used.",
+            "15m minute=1 means the close of the first 1m candle.",
+            "Minute 14 is excluded because it uses the final 15m close.",
+            "Flat 15m outcomes are excluded instead of forced into DOWN.",
+            "Strategy returns for DOWN signals invert the underlying return sign."
+        ],
     }
 
-    with open(
-        OUTPUT_FILE,
-        "w",
-        encoding="utf-8"
-    ) as file:
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
+        json.dump(output, file, indent=2, ensure_ascii=False)
 
-        json.dump(
-            output,
-            file,
-            indent=2,
-            ensure_ascii=False
-        )
-
-    print()
-    print("=" * 60)
-    print("RESULTADOS DESTACADOS")
-    print("=" * 60)
-
-    ranked = sorted(
-        momentum.items(),
-        key=lambda x: (
-            x[1]["win_rate_15m"],
-            x[1]["samples"]
-        ),
-        reverse=True
-    )
-
-    shown = 0
-
-    for key, result in ranked:
-
-        if result["samples"] < 100:
-            continue
-
-        print(
-            f"{key:18} "
-            f"n={result['samples']:5} "
-            f"15m={result['win_rate_15m']:6.2f}% "
-            f"avg15={result['avg_return_15m']:8.4f}%"
-        )
-
-        shown += 1
-
-        if shown >= 15:
-            break
-
-    print()
-    print(
-        f"Reporte guardado en {OUTPUT_FILE}"
-    )
+    print(f"Reporte guardado en {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
