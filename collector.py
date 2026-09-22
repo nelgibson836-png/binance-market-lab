@@ -39,7 +39,7 @@ def get_json(path):
         }
     )
 
-    with urlopen(url, timeout=15) as response:
+    with urlopen(request, timeout=15) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
