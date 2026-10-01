@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Run challenger unit tests
+        run: python -m unittest test_challenger_execution_v1.py
+
       - name: Run challenger
         run: python challenger_execution_v1.py
 
