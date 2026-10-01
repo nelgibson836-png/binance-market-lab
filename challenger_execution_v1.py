@@ -8,7 +8,7 @@ from urllib.error import HTTPError, URLError
 
 BASE_URL = "https://data-api.binance.vision"
 SYMBOL = "BTCUSDT"
-DAYS = 90
+DAYS = 60
 INTERVAL = "1m"
 LIMIT = 1000
 OUTPUT_FILE = "data/challenger_execution_v1.json"
