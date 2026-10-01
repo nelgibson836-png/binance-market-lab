@@ -10,7 +10,7 @@ on:
 
 concurrency:
   group: binance-market-lab-execution-cost-challenger-v1
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
