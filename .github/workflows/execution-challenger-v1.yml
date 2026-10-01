@@ -1,0 +1,54 @@
+name: Execution Cost Challenger V1
+
+on:
+  push:
+    branches:
+      - "challenger/execution-costs-v1"
+  workflow_dispatch:
+
+concurrency:
+  group: binance-market-lab-execution-cost-challenger-v1
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  challenger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run challenger
+        run: python challenger_execution_v1.py
+
+      - name: Validate report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("data/challenger_execution_v1.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+
+          assert data["method"] == "walk_forward_challenger_execution"
+          assert data["cost_model"]["total_round_trip_bps"] > 0
+          assert data["oos_summary"]["tested_folds"] >= 1
+          assert path.stat().st_size > 0
+          print("Challenger validation OK")
+          PY
+
+      - name: Commit challenger report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/challenger_execution_v1.json
+          git diff --cached --quiet || git commit -m "Run execution cost challenger V1"
+          git push
