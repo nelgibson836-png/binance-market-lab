@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - "challenger/execution-costs-v1"
+    paths-ignore:
+      - "data/challenger_execution_v1.json"
   workflow_dispatch:
 
 concurrency:
