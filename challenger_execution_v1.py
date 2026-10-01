@@ -249,7 +249,7 @@ def evaluate_candidate(candles, minute, threshold_bps):
         "mean_gross_return": sum(gross_values) / len(gross_values),
         "cumulative_net_return": equity - 1.0,
         "max_drawdown": max_drawdown,
-        "profit_factor": positive / negative if negative > 0 else math.inf,
+        "profit_factor": positive / negative if negative > 0 else None,
         "daily_net_return": [
             {"date": day, "net_return": value}
             for day, value in sorted(daily.items())
