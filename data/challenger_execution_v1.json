@@ -1,0 +1,214 @@
+{
+  "generated_at": "2026-10-01T15:22:11.962258+00:00",
+  "symbol": "BTCUSDT",
+  "interval": "1m",
+  "days": 60,
+  "method": "walk_forward_challenger_execution",
+  "train_days": 21,
+  "test_days": 7,
+  "step_days": 7,
+  "entry_minutes": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "move_thresholds_bps": [
+    0,
+    2,
+    5,
+    10,
+    20,
+    30
+  ],
+  "min_train_trades": 100,
+  "cost_model": {
+    "fee_bps_per_side": 10.0,
+    "slippage_bps_per_side": 2.0,
+    "spread_bps_round_trip": 2.0,
+    "total_round_trip_bps": 26.0
+  },
+  "samples_1m": 86399,
+  "candles_15m": 5759,
+  "folds": 5,
+  "oos_summary": {
+    "trades": 257,
+    "win_rate": 0.07392996108949416,
+    "mean_net_return": -0.002603666196733539,
+    "cumulative_net_return": -0.4885670591653105,
+    "max_drawdown": -0.4885670591653105,
+    "positive_folds": 0,
+    "tested_folds": 5
+  },
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_start": "2026-08-02T15:30:00+00:00",
+      "train_end": "2026-08-23T15:30:00+00:00",
+      "test_end": "2026-08-30T15:30:00+00:00",
+      "train_candles": 2016,
+      "test_candles": 672,
+      "selected": {
+        "minute": 9,
+        "threshold_bps": 20,
+        "trades": 186,
+        "win_rate": 0.11290322580645161,
+        "mean_net_return": -0.002249337976342982,
+        "mean_gross_return": 0.00035066202365701863,
+        "profit_factor": 0.13069527959349186
+      },
+      "test": {
+        "trades": 116,
+        "win_rate": 0.09482758620689655,
+        "mean_net_return": -0.0024730261009013907,
+        "mean_gross_return": 0.0001269738990986091,
+        "cumulative_net_return": -0.24981057432370324,
+        "max_drawdown": -0.24981057432370324,
+        "profit_factor": 0.05221335904405574
+      },
+      "baseline_always_long": {
+        "trades": 672,
+        "mean_net_return": -0.0025385272298127743,
+        "cumulative_net_return": -0.8188846427439065
+      }
+    },
+    {
+      "fold": 2,
+      "train_start": "2026-08-09T15:30:00+00:00",
+      "train_end": "2026-08-30T15:30:00+00:00",
+      "test_end": "2026-09-06T15:30:00+00:00",
+      "train_candles": 2016,
+      "test_candles": 672,
+      "selected": {
+        "minute": 9,
+        "threshold_bps": 30,
+        "trades": 128,
+        "win_rate": 0.140625,
+        "mean_net_return": -0.002230022654521506,
+        "mean_gross_return": 0.00036997734547849316,
+        "profit_factor": 0.18525226555819285
+      },
+      "test": {
+        "trades": 26,
+        "win_rate": 0.11538461538461539,
+        "mean_net_return": -0.0025297089147528354,
+        "mean_gross_return": 7.029108524716387e-05,
+        "cumulative_net_return": -0.06382745172048199,
+        "max_drawdown": -0.06551460421086586,
+        "profit_factor": 0.07636762754949776
+      },
+      "baseline_always_long": {
+        "trades": 672,
+        "mean_net_return": -0.002520495909724758,
+        "cumulative_net_return": -0.8166453536835584
+      }
+    },
+    {
+      "fold": 3,
+      "train_start": "2026-08-16T15:30:00+00:00",
+      "train_end": "2026-09-06T15:30:00+00:00",
+      "test_end": "2026-09-13T15:30:00+00:00",
+      "train_candles": 2016,
+      "test_candles": 672,
+      "selected": {
+        "minute": 9,
+        "threshold_bps": 30,
+        "trades": 148,
+        "win_rate": 0.14189189189189189,
+        "mean_net_return": -0.002265401541732227,
+        "mean_gross_return": 0.0003345984582677727,
+        "profit_factor": 0.17341462938162622
+      },
+      "test": {
+        "trades": 24,
+        "win_rate": 0.041666666666666664,
+        "mean_net_return": -0.0025468001378194955,
+        "mean_gross_return": 5.319986218050414e-05,
+        "cumulative_net_return": -0.05940404645782249,
+        "max_drawdown": -0.05940404645782249,
+        "profit_factor": 0.05943673906300362
+      },
+      "baseline_always_long": {
+        "trades": 672,
+        "mean_net_return": -0.0025916956150806255,
+        "cumulative_net_return": -0.8252007826048048
+      }
+    },
+    {
+      "fold": 4,
+      "train_start": "2026-08-23T15:30:00+00:00",
+      "train_end": "2026-09-13T15:30:00+00:00",
+      "test_end": "2026-09-20T15:30:00+00:00",
+      "train_candles": 2016,
+      "test_candles": 672,
+      "selected": {
+        "minute": 9,
+        "threshold_bps": 30,
+        "trades": 104,
+        "win_rate": 0.08653846153846154,
+        "mean_net_return": -0.002532265932005768,
+        "mean_gross_return": 6.773406799423197e-05,
+        "profit_factor": 0.060140653773627366
+      },
+      "test": {
+        "trades": 36,
+        "win_rate": 0.05555555555555555,
+        "mean_net_return": -0.0032625513933373707,
+        "mean_gross_return": -0.0006625513933373712,
+        "cumulative_net_return": -0.11111140924613039,
+        "max_drawdown": -0.11111140924613039,
+        "profit_factor": 0.08535046187352698
+      },
+      "baseline_always_long": {
+        "trades": 672,
+        "mean_net_return": -0.00254894008225203,
+        "cumulative_net_return": -0.8201411365475084
+      }
+    },
+    {
+      "fold": 5,
+      "train_start": "2026-08-30T15:30:00+00:00",
+      "train_end": "2026-09-20T15:30:00+00:00",
+      "test_end": "2026-09-27T15:30:00+00:00",
+      "train_candles": 2016,
+      "test_candles": 672,
+      "selected": {
+        "minute": 13,
+        "threshold_bps": 30,
+        "trades": 133,
+        "win_rate": 0.03759398496240601,
+        "mean_net_return": -0.0025675309310989993,
+        "mean_gross_return": 3.246906890099988e-05,
+        "profit_factor": 0.020660164832546506
+      },
+      "test": {
+        "trades": 55,
+        "win_rate": 0.03636363636363636,
+        "mean_net_return": -0.002507703629174022,
+        "mean_gross_return": 9.229637082597709e-05,
+        "cumulative_net_return": -0.12901350968694214,
+        "max_drawdown": -0.12901350968694214,
+        "profit_factor": 0.005927547988030463
+      },
+      "baseline_always_long": {
+        "trades": 672,
+        "mean_net_return": -0.0026120707872992525,
+        "cumulative_net_return": -0.8275645997329157
+      }
+    }
+  ],
+  "notes": [
+    "Only complete closed 15m candles are used.",
+    "The decision is made from minute N close; entry occurs at minute N+1 open.",
+    "The final 15m close is used only for settlement after the decision.",
+    "Candidate minute and movement threshold are selected on training data only.",
+    "Costs are research assumptions, not the user's account fee tier.",
+    "DOWN signals represent a directional short assumption and are not live trading.",
+    "No existing historical dataset, reference backtest, or main-branch report is modified."
+  ]
+}
