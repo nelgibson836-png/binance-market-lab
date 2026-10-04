@@ -124,16 +124,21 @@ def build_candles(rows):
     return candles
 
 
-def build_observations(candles):
+def build_observations(candles, rows):
+    close_map = {row["open_time"]: row["close"] for row in rows}
     observations = []
     for candle in candles:
-        rows = candle["rows"]
-        base = rows[0]["open"]
-
-        # We keep enough look-ahead rows for 1/3/5/15 minute forward returns.
+        rows_15m = candle["rows"]
+        base = rows_15m[0]["open"]
         for minute in ENTRY_MINUTES:
-            current_index = minute - 1
-            current = rows[current_index]["close"]
+            current_row = rows_15m[minute - 1]
+            current = current_row["close"]
+            future_closes = {}
+            for horizon in HORIZONS:
+                target_time = current_row["open_time"] + horizon * 60_000
+                future = close_map.get(target_time)
+                if future is not None:
+                    future_closes[horizon] = future
             move = pct_change(base, current)
             observations.append({
                 "candle_start": candle["candle_start"],
@@ -142,11 +147,7 @@ def build_observations(candles):
                 "move_bucket": move_bucket(move),
                 "actual": candle["actual"],
                 "current_close": current,
-                "future_closes": {
-                    horizon: rows[current_index + horizon]["close"]
-                    for horizon in HORIZONS
-                    if current_index + horizon < len(rows)
-                },
+                "future_closes": future_closes,
             })
     return observations
 
@@ -272,14 +273,13 @@ def evaluate_configuration(observations, threshold, entry_minute, horizon, cost)
     baseline_returns = []
     predictions = []
 
-    # Walk-forward is rebuilt here rather than fitting on future observations.
-    candles = sorted({obs["candle_start"] for obs in observations})
-    if not candles:
+    candle_starts = sorted({obs["candle_start"] for obs in observations})
+    if not candle_starts:
         return None
 
     day_ms = 24 * 60 * 60 * 1000
-    first_start = candles[0]
-    last_start = candles[-1]
+    first_start = candle_starts[0]
+    last_start = candle_starts[-1]
     train_ms = TRAIN_DAYS * day_ms
     test_ms = TEST_DAYS * day_ms
     step_ms = STEP_DAYS * day_ms
@@ -288,71 +288,84 @@ def evaluate_configuration(observations, threshold, entry_minute, horizon, cost)
     while fold_start + train_ms + test_ms <= last_start + 900_000:
         train_end = fold_start + train_ms
         test_end = train_end + test_ms
-        train = [x for x in observations if fold_start <= x["candle_start"] < train_end]
-        test = [x for x in observations if train_end <= x["candle_start"] < test_end and x["minute"] == entry_minute]
+
+        train = [
+            x for x in observations
+            if fold_start <= x["candle_start"] < train_end
+        ]
+        test = [
+            x for x in observations
+            if train_end <= x["candle_start"] < test_end
+            and x["minute"] == entry_minute
+        ]
 
         probabilities = fit_model(train)
-
         fold_returns = []
         fold_baseline = []
+        candle_map = {}
+
         for obs in test:
-            probability = probabilities.get((obs["minute"], obs["move_bucket"]))
-            if probability is None:
+            probability_up = probabilities.get(
+                (obs["minute"], obs["move_bucket"])
+            )
+            if probability_up is None:
                 continue
 
+            model_probability = (
+                probability_up
+                if probability_up >= 0.5
+                else 1.0 - probability_up
+            )
+            model_pred_correct = int(
+                (probability_up >= 0.5 and obs["actual"] == 1)
+                or (probability_up < 0.5 and obs["actual"] == 0)
+            )
             predictions.append({
-                "probability": probability if probability >= 0.5 else 1.0 - probability,
-                "actual": 1 if (probability >= 0.5 and obs["actual"] == 1) or (probability < 0.5 and obs["actual"] == 0) else 0,
+                "probability": model_probability,
+                "actual": model_pred_correct,
             })
 
-            if probability >= threshold:
+            if probability_up >= threshold:
                 direction = 1
-            elif probability <= 1.0 - threshold:
+            elif probability_up <= 1.0 - threshold:
                 direction = 0
             else:
                 continue
 
             result = trade_return(obs, horizon, direction, cost)
             baseline_direction = 1 if obs["move"] > 0 else 0
-            baseline_result = trade_return(obs, horizon, baseline_direction, cost)
-
-            if result is None:
+            baseline_result = trade_return(
+                obs, horizon, baseline_direction, cost
+            )
+            if result is None or baseline_result is None:
                 continue
 
             fold_returns.append(result)
             fold_baseline.append(baseline_result)
             all_returns.append(result)
             baseline_returns.append(baseline_result)
+            candle_map[obs["candle_start"]] = result
 
-        # One return per candle for bootstrap/drawdown diagnostics.
-        by_candle = {}
-        for obs, result in zip(test, [None] * len(test)):
-            del obs, result
-
-        # Build candle means from the fold's selected trades.
-        # Entry minute is fixed per configuration, so there is at most one
-        # selected observation per candle.
-        for ret, obs in zip(fold_returns, [
-            x for x in test
-            if probabilities.get((x["minute"], x["move_bucket"])) is not None
-            and (
-                probabilities[(x["minute"], x["move_bucket"])] >= threshold
-                or probabilities[(x["minute"], x["move_bucket"])] <= 1.0 - threshold
-            )
-            and x["future_closes"].get(horizon) is not None
-        ]):
-            by_candle[obs["candle_start"]] = ret
-
-        candle_vals = list(by_candle.values())
-        all_candle_returns.extend(candle_vals)
+        all_candle_returns.extend(candle_map.values())
 
         fold_results.append({
-            "fold_start": datetime.fromtimestamp(fold_start / 1000, timezone.utc).isoformat(),
-            "test_end": datetime.fromtimestamp(test_end / 1000, timezone.utc).isoformat(),
+            "fold_start": datetime.fromtimestamp(
+                fold_start / 1000, timezone.utc
+            ).isoformat(),
+            "test_end": datetime.fromtimestamp(
+                test_end / 1000, timezone.utc
+            ).isoformat(),
             "signals": len(fold_returns),
-            "mean_net_return": round(sum(fold_returns) / len(fold_returns), 8) if fold_returns else None,
-            "win_rate": round(sum(1 for x in fold_returns if x > 0) / len(fold_returns) * 100, 2) if fold_returns else None,
-            "baseline_mean_net_return": round(sum(fold_baseline) / len(fold_baseline), 8) if fold_baseline else None,
+            "mean_net_return": round(
+                sum(fold_returns) / len(fold_returns), 8
+            ) if fold_returns else None,
+            "win_rate": round(
+                sum(1 for x in fold_returns if x > 0)
+                / len(fold_returns) * 100, 2
+            ) if fold_returns else None,
+            "baseline_mean_net_return": round(
+                sum(fold_baseline) / len(fold_baseline), 8
+            ) if fold_baseline else None,
         })
 
         fold_start += step_ms
@@ -360,13 +373,18 @@ def evaluate_configuration(observations, threshold, entry_minute, horizon, cost)
     if not all_returns:
         return None
 
-    total = 1.0
+    equity = 1.0
     for value in all_returns:
-        total *= 1.0 + value
+        equity *= 1.0 + value
 
-    fold_means = [f["mean_net_return"] for f in fold_results if f["mean_net_return"] is not None]
+    fold_means = [
+        f["mean_net_return"]
+        for f in fold_results
+        if f["mean_net_return"] is not None
+    ]
     profitable_folds = sum(1 for value in fold_means if value > 0)
     baseline_mean = sum(baseline_returns) / len(baseline_returns)
+    model_mean = sum(all_returns) / len(all_returns)
 
     return {
         "threshold": threshold,
@@ -375,20 +393,30 @@ def evaluate_configuration(observations, threshold, entry_minute, horizon, cost)
         "round_trip_cost": cost,
         "trades": len(all_returns),
         "wins": sum(1 for x in all_returns if x > 0),
-        "win_rate": round(sum(1 for x in all_returns if x > 0) / len(all_returns) * 100, 2),
-        "mean_net_return": round(sum(all_returns) / len(all_returns), 8),
-        "median_net_return": round(sorted(all_returns)[len(all_returns) // 2], 8),
+        "win_rate": round(
+            sum(1 for x in all_returns if x > 0)
+            / len(all_returns) * 100, 2
+        ),
+        "mean_net_return": round(model_mean, 8),
+        "median_net_return": round(
+            sorted(all_returns)[len(all_returns) // 2], 8
+        ),
         "sum_net_return": round(sum(all_returns), 8),
-        "compounded_return": round(total - 1.0, 6),
+        "compounded_return": round(equity - 1.0, 6),
         "max_drawdown": round(max_drawdown(all_returns), 6),
         "profitable_folds": profitable_folds,
         "total_folds": len(fold_means),
-        "fold_profitability_rate": round(profitable_folds / len(fold_means), 4) if fold_means else None,
+        "fold_profitability_rate": round(
+            profitable_folds / len(fold_means), 4
+        ) if fold_means else None,
         "baseline_mean_net_return": round(baseline_mean, 8),
-        "model_minus_baseline": round(sum(all_returns) / len(all_returns) - baseline_mean, 8),
-        "block_bootstrap_mean_ci95": bootstrap_mean_ci(all_candle_returns),
+        "model_minus_baseline": round(model_mean - baseline_mean, 8),
+        "block_bootstrap_mean_ci95": bootstrap_mean_ci(
+            all_candle_returns
+        ),
         "calibration": calibration_summary(predictions),
         "folds": fold_results,
+        "_returns": all_returns,
     }
 
 
@@ -419,10 +447,9 @@ def monte_carlo(returns):
 def main():
     rows = fetch_klines()
     candles = build_candles(rows)
-    observations = build_observations(candles)
+    observations = build_observations(candles, rows)
 
     configurations = []
-    returns_cache = {}
 
     for threshold in PROBABILITY_THRESHOLDS:
         for entry_minute in ENTRY_MINUTES:
@@ -438,27 +465,21 @@ def main():
                     if result:
                         configurations.append(result)
 
-    # Monte Carlo is deliberately limited to the strongest candidates at the
-    # 20bp round-trip stress level to keep this report fast and interpretable.
     stress_cost = 0.002
-    candidates = [
+    stress_candidates = [
         x for x in configurations
         if abs(x["round_trip_cost"] - stress_cost) < 1e-12
     ]
-    candidates.sort(key=lambda x: x["mean_net_return"], reverse=True)
+    stress_candidates.sort(
+        key=lambda x: x["mean_net_return"],
+        reverse=True,
+    )
 
-    for item in candidates[:5]:
-        key = (
-            item["threshold"],
-            item["entry_minute"],
-            item["horizon_minutes"],
-            item["round_trip_cost"],
-        )
-        returns_cache[key] = None
-        # Reconstruct a compact return stream from the fold output.
-        # Fold-level means are insufficient for Monte Carlo, so this diagnostic
-        # is intentionally omitted from the persisted result.
-        item["monte_carlo"] = "not_computed_from_aggregated_folds"
+    for item in stress_candidates[:5]:
+        item["monte_carlo"] = monte_carlo(item["_returns"])
+
+    for item in configurations:
+        item.pop("_returns", None)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -475,16 +496,21 @@ def main():
                 for f in result["folds"]
             }) if configurations else 0,
         },
-        "cost_definition": "generic all-in round-trip stress; tune to actual Binance venue and fee tier before live use",
+        "cost_definition": (
+            "generic all-in round-trip stress; tune to actual "
+            "Binance venue and fee tier before live use"
+        ),
         "configurations": configurations,
         "notes": [
             "Only complete closed 1m data is used.",
             "Direction is selected strictly from training data in each walk-forward fold.",
             "A fixed entry minute and fixed horizon create one trade opportunity per 15m candle.",
+            "Horizon prices come from the continuous 1m series, including across 15m boundaries.",
             "Round-trip costs are stress cases, not reconstructed historical fills.",
             "This is an economic viability test, not proof of executable profitability.",
             "Model-vs-baseline alpha is reported on identical selected signals.",
             "Block bootstrap uses one return per 15m candle to reduce dependence from overlapping observations.",
+            "Monte Carlo is reported only for the strongest configurations at 20bp round-trip stress.",
         ],
     }
 
