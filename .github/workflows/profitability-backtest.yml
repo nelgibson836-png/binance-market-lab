@@ -1,0 +1,46 @@
+name: Profitability Backtest
+
+on:
+  push:
+    paths:
+      - "profitability_backtest.py"
+  workflow_dispatch:
+  schedule:
+    - cron: "47 */6 * * *"
+
+concurrency:
+  group: binance-market-lab-profitability-backtest
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  profitability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile research scripts
+        run: |
+          python -m py_compile profitability_backtest.py backtest_15m.py strategy_probe.py collector.py quality_report.py
+
+      - name: Run profitability backtest
+        run: python profitability_backtest.py
+
+      - name: Commit profitability report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          test -s data/profitability_backtest.json
+          git add data/profitability_backtest.json
+          git diff --cached --quiet || git commit -m "Update profitability backtest"
+          git push
