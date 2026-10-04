@@ -12,6 +12,7 @@ DAYS = 180
 INTERVAL = "1m"
 LIMIT = 1000
 OUTPUT_FILE = "data/profitability_backtest.json"
+REPORT_VERSION = "1.0"
 
 TRAIN_DAYS = 21
 TEST_DAYS = 7
