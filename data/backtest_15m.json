@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T11:39:09.303555+00:00",
+  "generated_at": "2026-10-09T11:33:31.415380+00:00",
   "symbol": "BTCUSDT",
   "interval": "1m",
   "days": 180,
@@ -16,43 +16,43 @@
   "evaluations": [
     {
       "threshold": 0.55,
-      "signals": 171891,
-      "trades": 171891,
-      "wins": 126931,
-      "win_rate": 73.84,
-      "unique_candles_sum": 14675
+      "signals": 171274,
+      "trades": 171274,
+      "wins": 126532,
+      "win_rate": 73.88,
+      "unique_candles_sum": 14677
     },
     {
       "threshold": 0.6,
-      "signals": 139730,
-      "trades": 139730,
-      "wins": 108124,
-      "win_rate": 77.38,
-      "unique_candles_sum": 14635
+      "signals": 140693,
+      "trades": 140693,
+      "wins": 108593,
+      "win_rate": 77.18,
+      "unique_candles_sum": 14638
     },
     {
       "threshold": 0.65,
-      "signals": 113472,
-      "trades": 113472,
-      "wins": 91543,
-      "win_rate": 80.67,
-      "unique_candles_sum": 14623
+      "signals": 112706,
+      "trades": 112706,
+      "wins": 90968,
+      "win_rate": 80.71,
+      "unique_candles_sum": 14616
     },
     {
       "threshold": 0.7,
-      "signals": 90788,
-      "trades": 90788,
-      "wins": 76118,
-      "win_rate": 83.84,
-      "unique_candles_sum": 14429
+      "signals": 91003,
+      "trades": 91003,
+      "wins": 76230,
+      "win_rate": 83.77,
+      "unique_candles_sum": 14482
     }
   ],
   "fold_results": [
     {
       "fold": 1,
-      "train_start": "2026-04-11T11:45:00+00:00",
-      "train_end": "2026-05-02T11:45:00+00:00",
-      "test_end": "2026-05-09T11:45:00+00:00",
+      "train_start": "2026-04-12T11:30:00+00:00",
+      "train_end": "2026-05-03T11:30:00+00:00",
+      "test_end": "2026-05-10T11:30:00+00:00",
       "train_observations": 26208,
       "test_observations": 8736,
       "train_state_count": 129,
@@ -60,67 +60,67 @@
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7965,
-          "trades": 7965,
-          "wins": 5904,
-          "win_rate": 74.12,
+          "signals": 7984,
+          "trades": 7984,
+          "wins": 5765,
+          "win_rate": 72.21,
           "unique_candles": 669,
-          "baseline_same_signals": 74.17,
+          "baseline_same_signals": 72.44,
           "block_bootstrap_ci95": {
             "unique_candles": 669,
-            "win_rate_ci95_low": 73.38,
-            "win_rate_ci95_high": 77.41
+            "win_rate_ci95_low": 71.39,
+            "win_rate_ci95_high": 75.54
           }
         },
         {
           "threshold": 0.6,
-          "signals": 5619,
-          "trades": 5619,
-          "wins": 4553,
-          "win_rate": 81.03,
+          "signals": 5604,
+          "trades": 5604,
+          "wins": 4421,
+          "win_rate": 78.89,
           "unique_candles": 666,
-          "baseline_same_signals": 81.05,
+          "baseline_same_signals": 78.96,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 79.39,
-            "win_rate_ci95_high": 83.78
+            "win_rate_ci95_low": 76.97,
+            "win_rate_ci95_high": 81.61
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4787,
-          "trades": 4787,
-          "wins": 3981,
-          "win_rate": 83.16,
+          "signals": 4856,
+          "trades": 4856,
+          "wins": 3940,
+          "win_rate": 81.14,
           "unique_candles": 666,
-          "baseline_same_signals": 83.2,
+          "baseline_same_signals": 81.2,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 80.49,
-            "win_rate_ci95_high": 84.99
+            "win_rate_ci95_low": 78.32,
+            "win_rate_ci95_high": 82.92
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4025,
-          "trades": 4025,
-          "wins": 3440,
-          "win_rate": 85.47,
-          "unique_candles": 642,
-          "baseline_same_signals": 85.47,
+          "signals": 4074,
+          "trades": 4074,
+          "wins": 3417,
+          "win_rate": 83.87,
+          "unique_candles": 665,
+          "baseline_same_signals": 83.87,
           "block_bootstrap_ci95": {
-            "unique_candles": 642,
-            "win_rate_ci95_low": 81.43,
-            "win_rate_ci95_high": 86.39
+            "unique_candles": 665,
+            "win_rate_ci95_low": 78.58,
+            "win_rate_ci95_high": 83.65
           }
         }
       ]
     },
     {
       "fold": 2,
-      "train_start": "2026-04-18T11:45:00+00:00",
-      "train_end": "2026-05-09T11:45:00+00:00",
-      "test_end": "2026-05-16T11:45:00+00:00",
+      "train_start": "2026-04-19T11:30:00+00:00",
+      "train_end": "2026-05-10T11:30:00+00:00",
+      "test_end": "2026-05-17T11:30:00+00:00",
       "train_observations": 26208,
       "test_observations": 8723,
       "train_state_count": 129,
@@ -128,67 +128,67 @@
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8074,
-          "trades": 8074,
-          "wins": 5836,
-          "win_rate": 72.28,
+          "signals": 8064,
+          "trades": 8064,
+          "wins": 5924,
+          "win_rate": 73.46,
           "unique_candles": 666,
-          "baseline_same_signals": 72.38,
+          "baseline_same_signals": 73.44,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 71.04,
-            "win_rate_ci95_high": 75.37
+            "win_rate_ci95_low": 72.45,
+            "win_rate_ci95_high": 76.25
           }
         },
         {
           "threshold": 0.6,
-          "signals": 5594,
-          "trades": 5594,
-          "wins": 4405,
-          "win_rate": 78.75,
+          "signals": 5807,
+          "trades": 5807,
+          "wins": 4603,
+          "win_rate": 79.27,
           "unique_candles": 666,
-          "baseline_same_signals": 78.75,
+          "baseline_same_signals": 79.25,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 77.09,
-            "win_rate_ci95_high": 81.99
+            "win_rate_ci95_low": 77.79,
+            "win_rate_ci95_high": 81.92
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4771,
-          "trades": 4771,
-          "wins": 3861,
-          "win_rate": 80.93,
+          "signals": 4823,
+          "trades": 4823,
+          "wins": 3946,
+          "win_rate": 81.82,
           "unique_candles": 666,
-          "baseline_same_signals": 80.93,
+          "baseline_same_signals": 81.82,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 78.28,
-            "win_rate_ci95_high": 83.09
+            "win_rate_ci95_low": 79.32,
+            "win_rate_ci95_high": 83.59
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3928,
-          "trades": 3928,
-          "wins": 3301,
-          "win_rate": 84.04,
-          "unique_candles": 647,
-          "baseline_same_signals": 84.04,
+          "signals": 3850,
+          "trades": 3850,
+          "wins": 3282,
+          "win_rate": 85.25,
+          "unique_candles": 633,
+          "baseline_same_signals": 85.25,
           "block_bootstrap_ci95": {
-            "unique_candles": 647,
-            "win_rate_ci95_low": 78.24,
-            "win_rate_ci95_high": 83.23
+            "unique_candles": 633,
+            "win_rate_ci95_low": 80.71,
+            "win_rate_ci95_high": 85.74
           }
         }
       ]
     },
     {
       "fold": 3,
-      "train_start": "2026-04-25T11:45:00+00:00",
-      "train_end": "2026-05-16T11:45:00+00:00",
-      "test_end": "2026-05-23T11:45:00+00:00",
+      "train_start": "2026-04-26T11:30:00+00:00",
+      "train_end": "2026-05-17T11:30:00+00:00",
+      "test_end": "2026-05-24T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 129,
@@ -196,67 +196,67 @@
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7828,
-          "trades": 7828,
-          "wins": 5819,
-          "win_rate": 74.34,
+          "signals": 7567,
+          "trades": 7567,
+          "wins": 5631,
+          "win_rate": 74.42,
           "unique_candles": 667,
-          "baseline_same_signals": 74.23,
+          "baseline_same_signals": 74.36,
           "block_bootstrap_ci95": {
             "unique_candles": 667,
-            "win_rate_ci95_low": 73.16,
-            "win_rate_ci95_high": 77.63
+            "win_rate_ci95_low": 73.53,
+            "win_rate_ci95_high": 77.47
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6163,
-          "trades": 6163,
-          "wins": 4817,
-          "win_rate": 78.16,
+          "signals": 6155,
+          "trades": 6155,
+          "wins": 4788,
+          "win_rate": 77.79,
           "unique_candles": 666,
-          "baseline_same_signals": 78.16,
+          "baseline_same_signals": 77.79,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 76.42,
-            "win_rate_ci95_high": 81.04
+            "win_rate_ci95_low": 76.45,
+            "win_rate_ci95_high": 80.72
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5327,
-          "trades": 5327,
-          "wins": 4283,
-          "win_rate": 80.4,
+          "signals": 5083,
+          "trades": 5083,
+          "wins": 4109,
+          "win_rate": 80.84,
           "unique_candles": 666,
-          "baseline_same_signals": 80.4,
+          "baseline_same_signals": 80.84,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 78.44,
-            "win_rate_ci95_high": 83.15
+            "win_rate_ci95_low": 78.73,
+            "win_rate_ci95_high": 83.07
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4278,
-          "trades": 4278,
-          "wins": 3579,
-          "win_rate": 83.66,
-          "unique_candles": 664,
-          "baseline_same_signals": 83.66,
+          "signals": 4342,
+          "trades": 4342,
+          "wins": 3607,
+          "win_rate": 83.07,
+          "unique_candles": 663,
+          "baseline_same_signals": 83.07,
           "block_bootstrap_ci95": {
-            "unique_candles": 664,
-            "win_rate_ci95_low": 80.16,
-            "win_rate_ci95_high": 84.87
+            "unique_candles": 663,
+            "win_rate_ci95_low": 79.68,
+            "win_rate_ci95_high": 84.41
           }
         }
       ]
     },
     {
       "fold": 4,
-      "train_start": "2026-05-02T11:45:00+00:00",
-      "train_end": "2026-05-23T11:45:00+00:00",
-      "test_end": "2026-05-30T11:45:00+00:00",
+      "train_start": "2026-05-03T11:30:00+00:00",
+      "train_end": "2026-05-24T11:30:00+00:00",
+      "test_end": "2026-05-31T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
@@ -264,67 +264,67 @@
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7591,
-          "trades": 7591,
-          "wins": 5689,
-          "win_rate": 74.94,
+          "signals": 7674,
+          "trades": 7674,
+          "wins": 5723,
+          "win_rate": 74.58,
           "unique_candles": 666,
-          "baseline_same_signals": 74.93,
+          "baseline_same_signals": 74.56,
           "block_bootstrap_ci95": {
             "unique_candles": 666,
-            "win_rate_ci95_low": 74.0,
-            "win_rate_ci95_high": 78.11
+            "win_rate_ci95_low": 73.54,
+            "win_rate_ci95_high": 77.85
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6208,
-          "trades": 6208,
-          "wins": 4876,
-          "win_rate": 78.54,
+          "signals": 6245,
+          "trades": 6245,
+          "wins": 4875,
+          "win_rate": 78.06,
           "unique_candles": 665,
-          "baseline_same_signals": 78.51,
+          "baseline_same_signals": 78.03,
           "block_bootstrap_ci95": {
             "unique_candles": 665,
-            "win_rate_ci95_low": 77.08,
-            "win_rate_ci95_high": 81.29
+            "win_rate_ci95_low": 76.59,
+            "win_rate_ci95_high": 81.24
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5091,
-          "trades": 5091,
-          "wins": 4179,
-          "win_rate": 82.09,
+          "signals": 4979,
+          "trades": 4979,
+          "wins": 4077,
+          "win_rate": 81.88,
           "unique_candles": 665,
-          "baseline_same_signals": 82.09,
+          "baseline_same_signals": 81.88,
           "block_bootstrap_ci95": {
             "unique_candles": 665,
-            "win_rate_ci95_low": 79.63,
-            "win_rate_ci95_high": 83.93
+            "win_rate_ci95_low": 78.89,
+            "win_rate_ci95_high": 83.53
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4241,
-          "trades": 4241,
-          "wins": 3615,
-          "win_rate": 85.24,
-          "unique_candles": 663,
-          "baseline_same_signals": 85.24,
+          "signals": 4000,
+          "trades": 4000,
+          "wins": 3429,
+          "win_rate": 85.72,
+          "unique_candles": 664,
+          "baseline_same_signals": 85.72,
           "block_bootstrap_ci95": {
-            "unique_candles": 663,
-            "win_rate_ci95_low": 80.85,
-            "win_rate_ci95_high": 85.42
+            "unique_candles": 664,
+            "win_rate_ci95_low": 80.36,
+            "win_rate_ci95_high": 85.27
           }
         }
       ]
     },
     {
       "fold": 5,
-      "train_start": "2026-05-09T11:45:00+00:00",
-      "train_end": "2026-05-30T11:45:00+00:00",
-      "test_end": "2026-06-06T11:45:00+00:00",
+      "train_start": "2026-05-10T11:30:00+00:00",
+      "train_end": "2026-05-31T11:30:00+00:00",
+      "test_end": "2026-06-07T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
@@ -332,203 +332,203 @@
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 5730,
-          "trades": 5730,
-          "wins": 4091,
-          "win_rate": 71.4,
-          "unique_candles": 640,
-          "baseline_same_signals": 71.41,
+          "signals": 5658,
+          "trades": 5658,
+          "wins": 3931,
+          "win_rate": 69.48,
+          "unique_candles": 642,
+          "baseline_same_signals": 69.48,
           "block_bootstrap_ci95": {
-            "unique_candles": 640,
-            "win_rate_ci95_low": 70.72,
-            "win_rate_ci95_high": 75.48
+            "unique_candles": 642,
+            "win_rate_ci95_low": 69.91,
+            "win_rate_ci95_high": 74.36
           }
         },
         {
           "threshold": 0.6,
-          "signals": 5056,
-          "trades": 5056,
-          "wins": 3689,
-          "win_rate": 72.96,
-          "unique_candles": 634,
-          "baseline_same_signals": 72.96,
+          "signals": 4898,
+          "trades": 4898,
+          "wins": 3516,
+          "win_rate": 71.78,
+          "unique_candles": 633,
+          "baseline_same_signals": 71.8,
           "block_bootstrap_ci95": {
-            "unique_candles": 634,
-            "win_rate_ci95_low": 72.59,
-            "win_rate_ci95_high": 77.38
+            "unique_candles": 633,
+            "win_rate_ci95_low": 72.22,
+            "win_rate_ci95_high": 77.13
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4303,
-          "trades": 4303,
-          "wins": 3220,
-          "win_rate": 74.83,
-          "unique_candles": 634,
-          "baseline_same_signals": 74.85,
+          "signals": 4195,
+          "trades": 4195,
+          "wins": 3100,
+          "win_rate": 73.9,
+          "unique_candles": 626,
+          "baseline_same_signals": 73.92,
           "block_bootstrap_ci95": {
-            "unique_candles": 634,
-            "win_rate_ci95_low": 73.96,
-            "win_rate_ci95_high": 78.88
+            "unique_candles": 626,
+            "win_rate_ci95_low": 74.12,
+            "win_rate_ci95_high": 79.01
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3613,
-          "trades": 3613,
-          "wins": 2792,
-          "win_rate": 77.28,
-          "unique_candles": 628,
-          "baseline_same_signals": 77.3,
+          "signals": 3703,
+          "trades": 3703,
+          "wins": 2802,
+          "win_rate": 75.67,
+          "unique_candles": 626,
+          "baseline_same_signals": 75.7,
           "block_bootstrap_ci95": {
-            "unique_candles": 628,
-            "win_rate_ci95_low": 74.72,
-            "win_rate_ci95_high": 80.18
+            "unique_candles": 626,
+            "win_rate_ci95_low": 74.69,
+            "win_rate_ci95_high": 79.58
           }
         }
       ]
     },
     {
       "fold": 6,
-      "train_start": "2026-05-16T11:45:00+00:00",
-      "train_end": "2026-06-06T11:45:00+00:00",
-      "test_end": "2026-06-13T11:45:00+00:00",
+      "train_start": "2026-05-17T11:30:00+00:00",
+      "train_end": "2026-06-07T11:30:00+00:00",
+      "test_end": "2026-06-14T11:30:00+00:00",
       "train_observations": 26208,
       "test_observations": 8723,
       "train_state_count": 130,
-      "usable_state_count": 90,
+      "usable_state_count": 92,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7643,
-          "trades": 7643,
-          "wins": 5516,
-          "win_rate": 72.17,
+          "signals": 7855,
+          "trades": 7855,
+          "wins": 5774,
+          "win_rate": 73.51,
           "unique_candles": 670,
-          "baseline_same_signals": 72.17,
+          "baseline_same_signals": 73.56,
           "block_bootstrap_ci95": {
             "unique_candles": 670,
-            "win_rate_ci95_low": 71.99,
-            "win_rate_ci95_high": 76.05
+            "win_rate_ci95_low": 72.76,
+            "win_rate_ci95_high": 77.1
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6602,
-          "trades": 6602,
-          "wins": 4921,
-          "win_rate": 74.54,
+          "signals": 6597,
+          "trades": 6597,
+          "wins": 5035,
+          "win_rate": 76.32,
           "unique_candles": 670,
-          "baseline_same_signals": 74.54,
+          "baseline_same_signals": 76.31,
           "block_bootstrap_ci95": {
             "unique_candles": 670,
-            "win_rate_ci95_low": 74.02,
-            "win_rate_ci95_high": 78.35
+            "win_rate_ci95_low": 75.11,
+            "win_rate_ci95_high": 79.56
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5695,
-          "trades": 5695,
-          "wins": 4398,
-          "win_rate": 77.23,
+          "signals": 5600,
+          "trades": 5600,
+          "wins": 4441,
+          "win_rate": 79.3,
           "unique_candles": 670,
-          "baseline_same_signals": 77.23,
+          "baseline_same_signals": 79.3,
           "block_bootstrap_ci95": {
             "unique_candles": 670,
-            "win_rate_ci95_low": 75.93,
-            "win_rate_ci95_high": 80.29
+            "win_rate_ci95_low": 77.27,
+            "win_rate_ci95_high": 82.0
           }
         },
         {
           "threshold": 0.7,
-          "signals": 5067,
-          "trades": 5067,
-          "wins": 3990,
-          "win_rate": 78.74,
+          "signals": 4783,
+          "trades": 4783,
+          "wins": 3868,
+          "win_rate": 80.87,
           "unique_candles": 670,
-          "baseline_same_signals": 78.76,
+          "baseline_same_signals": 80.89,
           "block_bootstrap_ci95": {
             "unique_candles": 670,
-            "win_rate_ci95_low": 76.47,
-            "win_rate_ci95_high": 81.11
+            "win_rate_ci95_low": 78.1,
+            "win_rate_ci95_high": 82.88
           }
         }
       ]
     },
     {
       "fold": 7,
-      "train_start": "2026-05-23T11:45:00+00:00",
-      "train_end": "2026-06-13T11:45:00+00:00",
-      "test_end": "2026-06-20T11:45:00+00:00",
+      "train_start": "2026-05-24T11:30:00+00:00",
+      "train_end": "2026-06-14T11:30:00+00:00",
+      "test_end": "2026-06-21T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
-      "usable_state_count": 105,
+      "usable_state_count": 102,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8080,
-          "trades": 8080,
-          "wins": 6089,
-          "win_rate": 75.36,
+          "signals": 8146,
+          "trades": 8146,
+          "wins": 6077,
+          "win_rate": 74.6,
           "unique_candles": 672,
-          "baseline_same_signals": 75.4,
+          "baseline_same_signals": 74.63,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 73.64,
-            "win_rate_ci95_high": 77.69
+            "win_rate_ci95_low": 73.26,
+            "win_rate_ci95_high": 77.22
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6950,
-          "trades": 6950,
-          "wins": 5439,
-          "win_rate": 78.26,
+          "signals": 6860,
+          "trades": 6860,
+          "wins": 5337,
+          "win_rate": 77.8,
           "unique_candles": 672,
-          "baseline_same_signals": 78.27,
+          "baseline_same_signals": 77.78,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 76.15,
-            "win_rate_ci95_high": 80.23
+            "win_rate_ci95_low": 76.1,
+            "win_rate_ci95_high": 80.2
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5471,
-          "trades": 5471,
-          "wins": 4571,
-          "win_rate": 83.55,
+          "signals": 5480,
+          "trades": 5480,
+          "wins": 4524,
+          "win_rate": 82.55,
           "unique_candles": 672,
-          "baseline_same_signals": 83.55,
+          "baseline_same_signals": 82.55,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 80.25,
-            "win_rate_ci95_high": 84.39
+            "win_rate_ci95_low": 80.11,
+            "win_rate_ci95_high": 84.09
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4507,
-          "trades": 4507,
-          "wins": 3923,
-          "win_rate": 87.04,
+          "signals": 4541,
+          "trades": 4541,
+          "wins": 3903,
+          "win_rate": 85.95,
           "unique_candles": 672,
-          "baseline_same_signals": 87.06,
+          "baseline_same_signals": 85.97,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 82.85,
-            "win_rate_ci95_high": 86.94
+            "win_rate_ci95_low": 81.9,
+            "win_rate_ci95_high": 86.11
           }
         }
       ]
     },
     {
       "fold": 8,
-      "train_start": "2026-05-30T11:45:00+00:00",
-      "train_end": "2026-06-20T11:45:00+00:00",
-      "test_end": "2026-06-27T11:45:00+00:00",
+      "train_start": "2026-05-31T11:30:00+00:00",
+      "train_end": "2026-06-21T11:30:00+00:00",
+      "test_end": "2026-06-28T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
@@ -536,135 +536,135 @@
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8290,
-          "trades": 8290,
-          "wins": 6446,
-          "win_rate": 77.76,
+          "signals": 7868,
+          "trades": 7868,
+          "wins": 6210,
+          "win_rate": 78.93,
           "unique_candles": 672,
-          "baseline_same_signals": 77.74,
+          "baseline_same_signals": 78.91,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 76.25,
-            "win_rate_ci95_high": 80.0
+            "win_rate_ci95_low": 77.37,
+            "win_rate_ci95_high": 81.5
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6583,
-          "trades": 6583,
-          "wins": 5439,
-          "win_rate": 82.62,
+          "signals": 6614,
+          "trades": 6614,
+          "wins": 5457,
+          "win_rate": 82.51,
           "unique_candles": 672,
-          "baseline_same_signals": 82.65,
+          "baseline_same_signals": 82.52,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 80.1,
-            "win_rate_ci95_high": 83.93
+            "win_rate_ci95_low": 80.02,
+            "win_rate_ci95_high": 84.17
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5570,
-          "trades": 5570,
-          "wins": 4781,
-          "win_rate": 85.83,
+          "signals": 5635,
+          "trades": 5635,
+          "wins": 4822,
+          "win_rate": 85.57,
           "unique_candles": 672,
-          "baseline_same_signals": 85.85,
+          "baseline_same_signals": 85.57,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 82.06,
-            "win_rate_ci95_high": 86.07
+            "win_rate_ci95_low": 82.13,
+            "win_rate_ci95_high": 86.35
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4392,
-          "trades": 4392,
-          "wins": 3947,
-          "win_rate": 89.87,
-          "unique_candles": 661,
-          "baseline_same_signals": 89.87,
+          "signals": 4557,
+          "trades": 4557,
+          "wins": 4066,
+          "win_rate": 89.23,
+          "unique_candles": 672,
+          "baseline_same_signals": 89.23,
           "block_bootstrap_ci95": {
-            "unique_candles": 661,
-            "win_rate_ci95_low": 84.56,
-            "win_rate_ci95_high": 89.2
+            "unique_candles": 672,
+            "win_rate_ci95_low": 84.14,
+            "win_rate_ci95_high": 88.66
           }
         }
       ]
     },
     {
       "fold": 9,
-      "train_start": "2026-06-06T11:45:00+00:00",
-      "train_end": "2026-06-27T11:45:00+00:00",
-      "test_end": "2026-07-04T11:45:00+00:00",
+      "train_start": "2026-06-07T11:30:00+00:00",
+      "train_end": "2026-06-28T11:30:00+00:00",
+      "test_end": "2026-07-05T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
-      "usable_state_count": 96,
+      "usable_state_count": 95,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7807,
-          "trades": 7807,
-          "wins": 5839,
-          "win_rate": 74.79,
+          "signals": 7979,
+          "trades": 7979,
+          "wins": 5954,
+          "win_rate": 74.62,
           "unique_candles": 672,
-          "baseline_same_signals": 74.84,
+          "baseline_same_signals": 74.63,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 73.32,
-            "win_rate_ci95_high": 77.36
+            "win_rate_ci95_low": 73.43,
+            "win_rate_ci95_high": 77.44
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6194,
-          "trades": 6194,
-          "wins": 4939,
-          "win_rate": 79.74,
+          "signals": 6335,
+          "trades": 6335,
+          "wins": 5018,
+          "win_rate": 79.21,
           "unique_candles": 672,
-          "baseline_same_signals": 79.72,
+          "baseline_same_signals": 79.23,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 77.38,
-            "win_rate_ci95_high": 81.7
+            "win_rate_ci95_low": 77.01,
+            "win_rate_ci95_high": 81.2
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5398,
-          "trades": 5398,
-          "wins": 4443,
-          "win_rate": 82.31,
+          "signals": 5546,
+          "trades": 5546,
+          "wins": 4546,
+          "win_rate": 81.97,
           "unique_candles": 672,
-          "baseline_same_signals": 82.29,
+          "baseline_same_signals": 81.97,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 78.96,
-            "win_rate_ci95_high": 83.27
+            "win_rate_ci95_low": 78.38,
+            "win_rate_ci95_high": 82.63
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4325,
-          "trades": 4325,
-          "wins": 3702,
-          "win_rate": 85.6,
-          "unique_candles": 661,
-          "baseline_same_signals": 85.6,
+          "signals": 4481,
+          "trades": 4481,
+          "wins": 3833,
+          "win_rate": 85.54,
+          "unique_candles": 672,
+          "baseline_same_signals": 85.54,
           "block_bootstrap_ci95": {
-            "unique_candles": 661,
-            "win_rate_ci95_low": 80.38,
-            "win_rate_ci95_high": 84.95
+            "unique_candles": 672,
+            "win_rate_ci95_low": 80.43,
+            "win_rate_ci95_high": 85.02
           }
         }
       ]
     },
     {
       "fold": 10,
-      "train_start": "2026-06-13T11:45:00+00:00",
-      "train_end": "2026-07-04T11:45:00+00:00",
-      "test_end": "2026-07-11T11:45:00+00:00",
+      "train_start": "2026-06-14T11:30:00+00:00",
+      "train_end": "2026-07-05T11:30:00+00:00",
+      "test_end": "2026-07-12T11:30:00+00:00",
       "train_observations": 26208,
       "test_observations": 8723,
       "train_state_count": 130,
@@ -672,57 +672,57 @@
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8026,
-          "trades": 8026,
-          "wins": 5854,
-          "win_rate": 72.94,
+          "signals": 7513,
+          "trades": 7513,
+          "wins": 5545,
+          "win_rate": 73.81,
           "unique_candles": 671,
-          "baseline_same_signals": 72.94,
+          "baseline_same_signals": 73.81,
           "block_bootstrap_ci95": {
             "unique_candles": 671,
-            "win_rate_ci95_low": 71.73,
-            "win_rate_ci95_high": 75.86
+            "win_rate_ci95_low": 72.32,
+            "win_rate_ci95_high": 76.66
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6101,
-          "trades": 6101,
-          "wins": 4727,
-          "win_rate": 77.48,
+          "signals": 6071,
+          "trades": 6071,
+          "wins": 4683,
+          "win_rate": 77.14,
           "unique_candles": 671,
-          "baseline_same_signals": 77.46,
+          "baseline_same_signals": 77.09,
           "block_bootstrap_ci95": {
             "unique_candles": 671,
-            "win_rate_ci95_low": 75.62,
-            "win_rate_ci95_high": 79.98
+            "win_rate_ci95_low": 75.24,
+            "win_rate_ci95_high": 79.74
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5397,
-          "trades": 5397,
-          "wins": 4304,
-          "win_rate": 79.75,
+          "signals": 5004,
+          "trades": 5004,
+          "wins": 4031,
+          "win_rate": 80.56,
           "unique_candles": 671,
-          "baseline_same_signals": 79.75,
+          "baseline_same_signals": 80.54,
           "block_bootstrap_ci95": {
             "unique_candles": 671,
-            "win_rate_ci95_low": 77.11,
-            "win_rate_ci95_high": 81.53
+            "win_rate_ci95_low": 77.79,
+            "win_rate_ci95_high": 82.38
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4153,
-          "trades": 4153,
-          "wins": 3499,
-          "win_rate": 84.25,
+          "signals": 3965,
+          "trades": 3965,
+          "wins": 3336,
+          "win_rate": 84.14,
           "unique_candles": 671,
-          "baseline_same_signals": 84.25,
+          "baseline_same_signals": 84.11,
           "block_bootstrap_ci95": {
             "unique_candles": 671,
-            "win_rate_ci95_low": 80.58,
+            "win_rate_ci95_low": 80.36,
             "win_rate_ci95_high": 85.02
           }
         }
@@ -730,816 +730,816 @@
     },
     {
       "fold": 11,
-      "train_start": "2026-06-20T11:45:00+00:00",
-      "train_end": "2026-07-11T11:45:00+00:00",
-      "test_end": "2026-07-18T11:45:00+00:00",
+      "train_start": "2026-06-21T11:30:00+00:00",
+      "train_end": "2026-07-12T11:30:00+00:00",
+      "test_end": "2026-07-19T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
-      "usable_state_count": 91,
+      "usable_state_count": 92,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8158,
-          "trades": 8158,
-          "wins": 6169,
-          "win_rate": 75.62,
+          "signals": 8183,
+          "trades": 8183,
+          "wins": 6170,
+          "win_rate": 75.4,
           "unique_candles": 672,
-          "baseline_same_signals": 75.63,
+          "baseline_same_signals": 75.45,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 74.1,
-            "win_rate_ci95_high": 77.97
+            "win_rate_ci95_low": 73.66,
+            "win_rate_ci95_high": 78.01
           }
         },
         {
           "threshold": 0.6,
-          "signals": 5547,
-          "trades": 5547,
-          "wins": 4553,
-          "win_rate": 82.08,
+          "signals": 6147,
+          "trades": 6147,
+          "wins": 4930,
+          "win_rate": 80.2,
           "unique_candles": 672,
-          "baseline_same_signals": 82.06,
+          "baseline_same_signals": 80.22,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 79.18,
-            "win_rate_ci95_high": 83.47
+            "win_rate_ci95_low": 77.19,
+            "win_rate_ci95_high": 81.87
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4646,
-          "trades": 4646,
-          "wins": 3929,
-          "win_rate": 84.57,
+          "signals": 4528,
+          "trades": 4528,
+          "wins": 3852,
+          "win_rate": 85.07,
           "unique_candles": 672,
-          "baseline_same_signals": 84.57,
+          "baseline_same_signals": 85.09,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 80.07,
-            "win_rate_ci95_high": 84.56
+            "win_rate_ci95_low": 80.29,
+            "win_rate_ci95_high": 85.25
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4035,
-          "trades": 4035,
-          "wins": 3502,
-          "win_rate": 86.79,
+          "signals": 3965,
+          "trades": 3965,
+          "wins": 3458,
+          "win_rate": 87.21,
           "unique_candles": 672,
-          "baseline_same_signals": 86.79,
+          "baseline_same_signals": 87.24,
           "block_bootstrap_ci95": {
             "unique_candles": 672,
-            "win_rate_ci95_low": 80.96,
-            "win_rate_ci95_high": 85.75
+            "win_rate_ci95_low": 81.35,
+            "win_rate_ci95_high": 86.41
           }
         }
       ]
     },
     {
       "fold": 12,
-      "train_start": "2026-06-27T11:45:00+00:00",
-      "train_end": "2026-07-18T11:45:00+00:00",
-      "test_end": "2026-07-25T11:45:00+00:00",
+      "train_start": "2026-06-28T11:30:00+00:00",
+      "train_end": "2026-07-19T11:30:00+00:00",
+      "test_end": "2026-07-26T11:30:00+00:00",
       "train_observations": 26195,
-      "test_observations": 8736,
+      "test_observations": 8723,
       "train_state_count": 130,
       "usable_state_count": 81,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8284,
-          "trades": 8284,
-          "wins": 6242,
-          "win_rate": 75.35,
-          "unique_candles": 671,
-          "baseline_same_signals": 75.37,
+          "signals": 8277,
+          "trades": 8277,
+          "wins": 6222,
+          "win_rate": 75.17,
+          "unique_candles": 670,
+          "baseline_same_signals": 75.14,
           "block_bootstrap_ci95": {
-            "unique_candles": 671,
-            "win_rate_ci95_low": 74.08,
-            "win_rate_ci95_high": 78.03
+            "unique_candles": 670,
+            "win_rate_ci95_low": 74.06,
+            "win_rate_ci95_high": 77.89
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6349,
-          "trades": 6349,
-          "wins": 5091,
-          "win_rate": 80.19,
+          "signals": 6625,
+          "trades": 6625,
+          "wins": 5227,
+          "win_rate": 78.9,
           "unique_candles": 670,
-          "baseline_same_signals": 80.15,
+          "baseline_same_signals": 78.87,
           "block_bootstrap_ci95": {
             "unique_candles": 670,
-            "win_rate_ci95_low": 78.1,
-            "win_rate_ci95_high": 82.33
+            "win_rate_ci95_low": 76.88,
+            "win_rate_ci95_high": 81.0
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4904,
-          "trades": 4904,
-          "wins": 4155,
-          "win_rate": 84.73,
-          "unique_candles": 669,
-          "baseline_same_signals": 84.71,
+          "signals": 4819,
+          "trades": 4819,
+          "wins": 4078,
+          "win_rate": 84.62,
+          "unique_candles": 668,
+          "baseline_same_signals": 84.6,
           "block_bootstrap_ci95": {
-            "unique_candles": 669,
-            "win_rate_ci95_low": 81.0,
-            "win_rate_ci95_high": 85.15
+            "unique_candles": 668,
+            "win_rate_ci95_low": 81.09,
+            "win_rate_ci95_high": 85.2
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3626,
-          "trades": 3626,
-          "wins": 3218,
-          "win_rate": 88.75,
-          "unique_candles": 668,
-          "baseline_same_signals": 88.78,
+          "signals": 3455,
+          "trades": 3455,
+          "wins": 3075,
+          "win_rate": 89.0,
+          "unique_candles": 667,
+          "baseline_same_signals": 89.03,
           "block_bootstrap_ci95": {
-            "unique_candles": 668,
-            "win_rate_ci95_low": 81.93,
-            "win_rate_ci95_high": 86.66
+            "unique_candles": 667,
+            "win_rate_ci95_low": 82.38,
+            "win_rate_ci95_high": 86.79
           }
         }
       ]
     },
     {
       "fold": 13,
-      "train_start": "2026-07-04T11:45:00+00:00",
-      "train_end": "2026-07-25T11:45:00+00:00",
-      "test_end": "2026-08-01T11:45:00+00:00",
-      "train_observations": 26195,
-      "test_observations": 8723,
+      "train_start": "2026-07-05T11:30:00+00:00",
+      "train_end": "2026-07-26T11:30:00+00:00",
+      "test_end": "2026-08-02T11:30:00+00:00",
+      "train_observations": 26182,
+      "test_observations": 8736,
       "train_state_count": 130,
       "usable_state_count": 74,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8077,
-          "trades": 8077,
-          "wins": 6004,
-          "win_rate": 74.33,
-          "unique_candles": 667,
-          "baseline_same_signals": 74.2,
+          "signals": 8055,
+          "trades": 8055,
+          "wins": 6013,
+          "win_rate": 74.65,
+          "unique_candles": 668,
+          "baseline_same_signals": 74.64,
           "block_bootstrap_ci95": {
-            "unique_candles": 667,
-            "win_rate_ci95_low": 72.98,
-            "win_rate_ci95_high": 76.96
+            "unique_candles": 668,
+            "win_rate_ci95_low": 73.4,
+            "win_rate_ci95_high": 77.35
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6862,
-          "trades": 6862,
-          "wins": 5300,
-          "win_rate": 77.24,
-          "unique_candles": 665,
-          "baseline_same_signals": 77.16,
+          "signals": 6855,
+          "trades": 6855,
+          "wins": 5312,
+          "win_rate": 77.49,
+          "unique_candles": 666,
+          "baseline_same_signals": 77.49,
           "block_bootstrap_ci95": {
-            "unique_candles": 665,
-            "win_rate_ci95_low": 75.73,
-            "win_rate_ci95_high": 80.0
+            "unique_candles": 666,
+            "win_rate_ci95_low": 75.67,
+            "win_rate_ci95_high": 80.22
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4708,
-          "trades": 4708,
-          "wins": 3896,
-          "win_rate": 82.75,
+          "signals": 5050,
+          "trades": 5050,
+          "wins": 4141,
+          "win_rate": 82.0,
           "unique_candles": 664,
-          "baseline_same_signals": 82.77,
+          "baseline_same_signals": 82.02,
           "block_bootstrap_ci95": {
             "unique_candles": 664,
-            "win_rate_ci95_low": 80.39,
-            "win_rate_ci95_high": 84.76
+            "win_rate_ci95_low": 79.59,
+            "win_rate_ci95_high": 84.12
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3618,
-          "trades": 3618,
-          "wins": 3132,
-          "win_rate": 86.57,
-          "unique_candles": 661,
-          "baseline_same_signals": 86.57,
+          "signals": 3858,
+          "trades": 3858,
+          "wins": 3314,
+          "win_rate": 85.9,
+          "unique_candles": 662,
+          "baseline_same_signals": 85.9,
           "block_bootstrap_ci95": {
-            "unique_candles": 661,
-            "win_rate_ci95_low": 82.01,
-            "win_rate_ci95_high": 86.69
+            "unique_candles": 662,
+            "win_rate_ci95_low": 81.42,
+            "win_rate_ci95_high": 86.24
           }
         }
       ]
     },
     {
       "fold": 14,
-      "train_start": "2026-07-11T11:45:00+00:00",
-      "train_end": "2026-08-01T11:45:00+00:00",
-      "test_end": "2026-08-08T11:45:00+00:00",
+      "train_start": "2026-07-12T11:30:00+00:00",
+      "train_end": "2026-08-02T11:30:00+00:00",
+      "test_end": "2026-08-09T11:30:00+00:00",
       "train_observations": 26195,
-      "test_observations": 8736,
+      "test_observations": 8723,
       "train_state_count": 130,
       "usable_state_count": 74,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8282,
-          "trades": 8282,
-          "wins": 6199,
-          "win_rate": 74.85,
-          "unique_candles": 671,
-          "baseline_same_signals": 75.02,
+          "signals": 8307,
+          "trades": 8307,
+          "wins": 6279,
+          "win_rate": 75.59,
+          "unique_candles": 670,
+          "baseline_same_signals": 75.39,
           "block_bootstrap_ci95": {
-            "unique_candles": 671,
-            "win_rate_ci95_low": 73.42,
-            "win_rate_ci95_high": 77.41
+            "unique_candles": 670,
+            "win_rate_ci95_low": 73.97,
+            "win_rate_ci95_high": 77.99
           }
         },
         {
           "threshold": 0.6,
           "signals": 7239,
           "trades": 7239,
-          "wins": 5587,
-          "win_rate": 77.18,
-          "unique_candles": 671,
-          "baseline_same_signals": 77.28,
+          "wins": 5653,
+          "win_rate": 78.09,
+          "unique_candles": 670,
+          "baseline_same_signals": 77.9,
           "block_bootstrap_ci95": {
-            "unique_candles": 671,
-            "win_rate_ci95_low": 75.59,
-            "win_rate_ci95_high": 79.85
+            "unique_candles": 670,
+            "win_rate_ci95_low": 76.49,
+            "win_rate_ci95_high": 80.62
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5787,
-          "trades": 5787,
-          "wins": 4685,
-          "win_rate": 80.96,
-          "unique_candles": 670,
-          "baseline_same_signals": 81.01,
+          "signals": 5719,
+          "trades": 5719,
+          "wins": 4686,
+          "win_rate": 81.94,
+          "unique_candles": 669,
+          "baseline_same_signals": 81.88,
           "block_bootstrap_ci95": {
-            "unique_candles": 670,
-            "win_rate_ci95_low": 78.64,
-            "win_rate_ci95_high": 83.03
+            "unique_candles": 669,
+            "win_rate_ci95_low": 79.92,
+            "win_rate_ci95_high": 84.17
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4264,
-          "trades": 4264,
-          "wins": 3635,
-          "win_rate": 85.25,
+          "signals": 4081,
+          "trades": 4081,
+          "wins": 3511,
+          "win_rate": 86.03,
           "unique_candles": 669,
-          "baseline_same_signals": 85.25,
+          "baseline_same_signals": 85.98,
           "block_bootstrap_ci95": {
             "unique_candles": 669,
-            "win_rate_ci95_low": 81.73,
-            "win_rate_ci95_high": 86.13
+            "win_rate_ci95_low": 83.02,
+            "win_rate_ci95_high": 87.54
           }
         }
       ]
     },
     {
       "fold": 15,
-      "train_start": "2026-07-18T11:45:00+00:00",
-      "train_end": "2026-08-08T11:45:00+00:00",
-      "test_end": "2026-08-15T11:45:00+00:00",
-      "train_observations": 26195,
-      "test_observations": 8723,
+      "train_start": "2026-07-19T11:30:00+00:00",
+      "train_end": "2026-08-09T11:30:00+00:00",
+      "test_end": "2026-08-16T11:30:00+00:00",
+      "train_observations": 26182,
+      "test_observations": 8632,
       "train_state_count": 130,
       "usable_state_count": 74,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8438,
-          "trades": 8438,
-          "wins": 6264,
-          "win_rate": 74.24,
-          "unique_candles": 671,
-          "baseline_same_signals": 73.69,
+          "signals": 8347,
+          "trades": 8347,
+          "wins": 6184,
+          "win_rate": 74.09,
+          "unique_candles": 664,
+          "baseline_same_signals": 73.28,
           "block_bootstrap_ci95": {
-            "unique_candles": 671,
-            "win_rate_ci95_low": 72.52,
-            "win_rate_ci95_high": 76.52
+            "unique_candles": 664,
+            "win_rate_ci95_low": 72.21,
+            "win_rate_ci95_high": 76.56
           }
         },
         {
           "threshold": 0.6,
-          "signals": 7283,
-          "trades": 7283,
-          "wins": 5601,
-          "win_rate": 76.91,
-          "unique_candles": 671,
-          "baseline_same_signals": 76.44,
+          "signals": 7205,
+          "trades": 7205,
+          "wins": 5527,
+          "win_rate": 76.71,
+          "unique_candles": 664,
+          "baseline_same_signals": 76.02,
           "block_bootstrap_ci95": {
-            "unique_candles": 671,
-            "win_rate_ci95_low": 75.32,
-            "win_rate_ci95_high": 79.48
+            "unique_candles": 664,
+            "win_rate_ci95_low": 75.01,
+            "win_rate_ci95_high": 79.49
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5636,
-          "trades": 5636,
-          "wins": 4540,
-          "win_rate": 80.55,
-          "unique_candles": 671,
-          "baseline_same_signals": 80.34,
+          "signals": 5794,
+          "trades": 5794,
+          "wins": 4619,
+          "win_rate": 79.72,
+          "unique_candles": 664,
+          "baseline_same_signals": 79.32,
           "block_bootstrap_ci95": {
-            "unique_candles": 671,
-            "win_rate_ci95_low": 78.7,
-            "win_rate_ci95_high": 83.07
+            "unique_candles": 664,
+            "win_rate_ci95_low": 77.69,
+            "win_rate_ci95_high": 82.24
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3873,
-          "trades": 3873,
-          "wins": 3256,
-          "win_rate": 84.07,
-          "unique_candles": 671,
-          "baseline_same_signals": 83.89,
+          "signals": 4229,
+          "trades": 4229,
+          "wins": 3500,
+          "win_rate": 82.76,
+          "unique_candles": 664,
+          "baseline_same_signals": 82.38,
           "block_bootstrap_ci95": {
-            "unique_candles": 671,
-            "win_rate_ci95_low": 81.38,
-            "win_rate_ci95_high": 85.82
+            "unique_candles": 664,
+            "win_rate_ci95_low": 79.93,
+            "win_rate_ci95_high": 84.71
           }
         }
       ]
     },
     {
       "fold": 16,
-      "train_start": "2026-07-25T11:45:00+00:00",
-      "train_end": "2026-08-15T11:45:00+00:00",
-      "test_end": "2026-08-22T11:45:00+00:00",
-      "train_observations": 26182,
-      "test_observations": 8606,
+      "train_start": "2026-07-26T11:30:00+00:00",
+      "train_end": "2026-08-16T11:30:00+00:00",
+      "test_end": "2026-08-23T11:30:00+00:00",
+      "train_observations": 26091,
+      "test_observations": 8710,
       "train_state_count": 130,
       "usable_state_count": 71,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7086,
-          "trades": 7086,
-          "wins": 5142,
-          "win_rate": 72.57,
-          "unique_candles": 651,
-          "baseline_same_signals": 71.73,
+          "signals": 7049,
+          "trades": 7049,
+          "wins": 5005,
+          "win_rate": 71.0,
+          "unique_candles": 659,
+          "baseline_same_signals": 70.75,
           "block_bootstrap_ci95": {
-            "unique_candles": 651,
-            "win_rate_ci95_low": 70.63,
-            "win_rate_ci95_high": 75.17
+            "unique_candles": 659,
+            "win_rate_ci95_low": 69.4,
+            "win_rate_ci95_high": 73.86
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6222,
-          "trades": 6222,
-          "wins": 4647,
-          "win_rate": 74.69,
-          "unique_candles": 640,
-          "baseline_same_signals": 74.17,
+          "signals": 6393,
+          "trades": 6393,
+          "wins": 4652,
+          "win_rate": 72.77,
+          "unique_candles": 649,
+          "baseline_same_signals": 72.67,
           "block_bootstrap_ci95": {
-            "unique_candles": 640,
-            "win_rate_ci95_low": 73.29,
-            "win_rate_ci95_high": 77.82
+            "unique_candles": 649,
+            "win_rate_ci95_low": 71.74,
+            "win_rate_ci95_high": 76.11
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5333,
-          "trades": 5333,
-          "wins": 4087,
-          "win_rate": 76.64,
-          "unique_candles": 635,
-          "baseline_same_signals": 76.19,
+          "signals": 5391,
+          "trades": 5391,
+          "wins": 4047,
+          "win_rate": 75.07,
+          "unique_candles": 642,
+          "baseline_same_signals": 75.03,
           "block_bootstrap_ci95": {
-            "unique_candles": 635,
-            "win_rate_ci95_low": 75.58,
-            "win_rate_ci95_high": 80.1
+            "unique_candles": 642,
+            "win_rate_ci95_low": 74.03,
+            "win_rate_ci95_high": 78.83
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4243,
-          "trades": 4243,
-          "wins": 3339,
-          "win_rate": 78.69,
-          "unique_candles": 632,
-          "baseline_same_signals": 78.46,
+          "signals": 4683,
+          "trades": 4683,
+          "wins": 3591,
+          "win_rate": 76.68,
+          "unique_candles": 639,
+          "baseline_same_signals": 76.68,
           "block_bootstrap_ci95": {
-            "unique_candles": 632,
-            "win_rate_ci95_low": 77.25,
-            "win_rate_ci95_high": 82.31
+            "unique_candles": 639,
+            "win_rate_ci95_low": 75.66,
+            "win_rate_ci95_high": 80.52
           }
         }
       ]
     },
     {
       "fold": 17,
-      "train_start": "2026-08-01T11:45:00+00:00",
-      "train_end": "2026-08-22T11:45:00+00:00",
-      "test_end": "2026-08-29T11:45:00+00:00",
+      "train_start": "2026-08-02T11:30:00+00:00",
+      "train_end": "2026-08-23T11:30:00+00:00",
+      "test_end": "2026-08-30T11:30:00+00:00",
       "train_observations": 26065,
       "test_observations": 8736,
       "train_state_count": 130,
-      "usable_state_count": 72,
+      "usable_state_count": 73,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7093,
-          "trades": 7093,
-          "wins": 5019,
-          "win_rate": 70.76,
-          "unique_candles": 661,
-          "baseline_same_signals": 70.79,
+          "signals": 7289,
+          "trades": 7289,
+          "wins": 5237,
+          "win_rate": 71.85,
+          "unique_candles": 662,
+          "baseline_same_signals": 71.78,
           "block_bootstrap_ci95": {
-            "unique_candles": 661,
-            "win_rate_ci95_low": 70.38,
-            "win_rate_ci95_high": 74.94
+            "unique_candles": 662,
+            "win_rate_ci95_low": 71.39,
+            "win_rate_ci95_high": 75.68
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6291,
-          "trades": 6291,
-          "wins": 4546,
-          "win_rate": 72.26,
-          "unique_candles": 652,
-          "baseline_same_signals": 72.28,
+          "signals": 6473,
+          "trades": 6473,
+          "wins": 4739,
+          "win_rate": 73.21,
+          "unique_candles": 654,
+          "baseline_same_signals": 73.15,
           "block_bootstrap_ci95": {
-            "unique_candles": 652,
-            "win_rate_ci95_low": 72.22,
-            "win_rate_ci95_high": 77.02
+            "unique_candles": 654,
+            "win_rate_ci95_low": 73.01,
+            "win_rate_ci95_high": 77.63
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5438,
-          "trades": 5438,
-          "wins": 4020,
-          "win_rate": 73.92,
-          "unique_candles": 650,
-          "baseline_same_signals": 73.94,
+          "signals": 5562,
+          "trades": 5562,
+          "wins": 4163,
+          "win_rate": 74.85,
+          "unique_candles": 653,
+          "baseline_same_signals": 74.85,
           "block_bootstrap_ci95": {
-            "unique_candles": 650,
-            "win_rate_ci95_low": 74.07,
-            "win_rate_ci95_high": 79.04
+            "unique_candles": 653,
+            "win_rate_ci95_low": 74.95,
+            "win_rate_ci95_high": 79.53
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4781,
-          "trades": 4781,
-          "wins": 3623,
-          "win_rate": 75.78,
-          "unique_candles": 649,
-          "baseline_same_signals": 75.78,
+          "signals": 4765,
+          "trades": 4765,
+          "wins": 3663,
+          "win_rate": 76.87,
+          "unique_candles": 653,
+          "baseline_same_signals": 76.87,
           "block_bootstrap_ci95": {
-            "unique_candles": 649,
-            "win_rate_ci95_low": 75.65,
-            "win_rate_ci95_high": 80.5
+            "unique_candles": 653,
+            "win_rate_ci95_low": 76.33,
+            "win_rate_ci95_high": 81.09
           }
         }
       ]
     },
     {
       "fold": 18,
-      "train_start": "2026-08-08T11:45:00+00:00",
-      "train_end": "2026-08-29T11:45:00+00:00",
-      "test_end": "2026-09-05T11:45:00+00:00",
-      "train_observations": 26065,
+      "train_start": "2026-08-09T11:30:00+00:00",
+      "train_end": "2026-08-30T11:30:00+00:00",
+      "test_end": "2026-09-06T11:30:00+00:00",
+      "train_observations": 26078,
       "test_observations": 8736,
       "train_state_count": 130,
-      "usable_state_count": 77,
+      "usable_state_count": 78,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7881,
-          "trades": 7881,
-          "wins": 5740,
-          "win_rate": 72.83,
+          "signals": 7909,
+          "trades": 7909,
+          "wins": 5770,
+          "win_rate": 72.95,
           "unique_candles": 669,
-          "baseline_same_signals": 72.77,
+          "baseline_same_signals": 73.08,
           "block_bootstrap_ci95": {
             "unique_candles": 669,
-            "win_rate_ci95_low": 72.2,
-            "win_rate_ci95_high": 76.27
+            "win_rate_ci95_low": 72.17,
+            "win_rate_ci95_high": 76.2
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6927,
-          "trades": 6927,
-          "wins": 5208,
-          "win_rate": 75.18,
+          "signals": 6956,
+          "trades": 6956,
+          "wins": 5235,
+          "win_rate": 75.26,
           "unique_candles": 669,
-          "baseline_same_signals": 75.17,
+          "baseline_same_signals": 75.35,
           "block_bootstrap_ci95": {
             "unique_candles": 669,
-            "win_rate_ci95_low": 74.62,
-            "win_rate_ci95_high": 78.83
+            "win_rate_ci95_low": 74.65,
+            "win_rate_ci95_high": 78.77
           }
         },
         {
           "threshold": 0.65,
-          "signals": 6197,
-          "trades": 6197,
-          "wins": 4766,
-          "win_rate": 76.91,
+          "signals": 6069,
+          "trades": 6069,
+          "wins": 4703,
+          "win_rate": 77.49,
           "unique_candles": 669,
-          "baseline_same_signals": 76.94,
+          "baseline_same_signals": 77.54,
           "block_bootstrap_ci95": {
             "unique_candles": 669,
-            "win_rate_ci95_low": 75.8,
-            "win_rate_ci95_high": 80.21
+            "win_rate_ci95_low": 76.31,
+            "win_rate_ci95_high": 80.58
           }
         },
         {
           "threshold": 0.7,
-          "signals": 4617,
-          "trades": 4617,
-          "wins": 3756,
-          "win_rate": 81.35,
+          "signals": 4376,
+          "trades": 4376,
+          "wins": 3636,
+          "win_rate": 83.09,
           "unique_candles": 669,
-          "baseline_same_signals": 81.35,
+          "baseline_same_signals": 83.09,
           "block_bootstrap_ci95": {
             "unique_candles": 669,
-            "win_rate_ci95_low": 78.7,
-            "win_rate_ci95_high": 83.25
+            "win_rate_ci95_low": 79.21,
+            "win_rate_ci95_high": 83.94
           }
         }
       ]
     },
     {
       "fold": 19,
-      "train_start": "2026-08-15T11:45:00+00:00",
-      "train_end": "2026-09-05T11:45:00+00:00",
-      "test_end": "2026-09-12T11:45:00+00:00",
-      "train_observations": 26078,
+      "train_start": "2026-08-16T11:30:00+00:00",
+      "train_end": "2026-09-06T11:30:00+00:00",
+      "test_end": "2026-09-13T11:30:00+00:00",
+      "train_observations": 26182,
       "test_observations": 8723,
       "train_state_count": 130,
-      "usable_state_count": 86,
+      "usable_state_count": 87,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8016,
-          "trades": 8016,
-          "wins": 5928,
-          "win_rate": 73.95,
+          "signals": 8305,
+          "trades": 8305,
+          "wins": 6021,
+          "win_rate": 72.5,
           "unique_candles": 671,
-          "baseline_same_signals": 74.29,
+          "baseline_same_signals": 73.08,
           "block_bootstrap_ci95": {
             "unique_candles": 671,
-            "win_rate_ci95_low": 72.41,
-            "win_rate_ci95_high": 76.75
+            "win_rate_ci95_low": 71.0,
+            "win_rate_ci95_high": 75.41
           }
         },
         {
           "threshold": 0.6,
-          "signals": 7061,
-          "trades": 7061,
-          "wins": 5358,
-          "win_rate": 75.88,
+          "signals": 7060,
+          "trades": 7060,
+          "wins": 5297,
+          "win_rate": 75.03,
           "unique_candles": 671,
-          "baseline_same_signals": 76.02,
+          "baseline_same_signals": 75.33,
           "block_bootstrap_ci95": {
             "unique_candles": 671,
-            "win_rate_ci95_low": 74.22,
-            "win_rate_ci95_high": 78.69
+            "win_rate_ci95_low": 73.31,
+            "win_rate_ci95_high": 77.99
           }
         },
         {
           "threshold": 0.65,
-          "signals": 5300,
-          "trades": 5300,
-          "wins": 4233,
-          "win_rate": 79.87,
+          "signals": 4731,
+          "trades": 4731,
+          "wins": 3833,
+          "win_rate": 81.02,
           "unique_candles": 670,
-          "baseline_same_signals": 79.87,
+          "baseline_same_signals": 81.02,
           "block_bootstrap_ci95": {
             "unique_candles": 670,
-            "win_rate_ci95_low": 76.65,
-            "win_rate_ci95_high": 81.2
+            "win_rate_ci95_low": 77.38,
+            "win_rate_ci95_high": 82.43
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3996,
-          "trades": 3996,
-          "wins": 3365,
-          "win_rate": 84.21,
-          "unique_candles": 670,
-          "baseline_same_signals": 84.21,
+          "signals": 3805,
+          "trades": 3805,
+          "wins": 3215,
+          "win_rate": 84.49,
+          "unique_candles": 640,
+          "baseline_same_signals": 84.49,
           "block_bootstrap_ci95": {
-            "unique_candles": 670,
-            "win_rate_ci95_low": 78.33,
-            "win_rate_ci95_high": 83.46
+            "unique_candles": 640,
+            "win_rate_ci95_low": 78.52,
+            "win_rate_ci95_high": 83.92
           }
         }
       ]
     },
     {
       "fold": 20,
-      "train_start": "2026-08-22T11:45:00+00:00",
-      "train_end": "2026-09-12T11:45:00+00:00",
-      "test_end": "2026-09-19T11:45:00+00:00",
+      "train_start": "2026-08-23T11:30:00+00:00",
+      "train_end": "2026-09-13T11:30:00+00:00",
+      "test_end": "2026-09-20T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
-      "usable_state_count": 82,
+      "usable_state_count": 80,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 8067,
-          "trades": 8067,
-          "wins": 5830,
-          "win_rate": 72.27,
+          "signals": 7975,
+          "trades": 7975,
+          "wins": 5786,
+          "win_rate": 72.55,
           "unique_candles": 669,
-          "baseline_same_signals": 72.53,
+          "baseline_same_signals": 72.48,
           "block_bootstrap_ci95": {
             "unique_candles": 669,
-            "win_rate_ci95_low": 71.2,
-            "win_rate_ci95_high": 75.61
+            "win_rate_ci95_low": 71.51,
+            "win_rate_ci95_high": 75.85
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6763,
-          "trades": 6763,
-          "wins": 5092,
+          "signals": 6745,
+          "trades": 6745,
+          "wins": 5078,
           "win_rate": 75.29,
           "unique_candles": 668,
-          "baseline_same_signals": 75.4,
+          "baseline_same_signals": 75.26,
           "block_bootstrap_ci95": {
             "unique_candles": 668,
-            "win_rate_ci95_low": 73.56,
-            "win_rate_ci95_high": 78.01
+            "win_rate_ci95_low": 73.92,
+            "win_rate_ci95_high": 78.3
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4896,
-          "trades": 4896,
-          "wins": 3958,
-          "win_rate": 80.84,
+          "signals": 5237,
+          "trades": 5237,
+          "wins": 4173,
+          "win_rate": 79.68,
           "unique_candles": 668,
-          "baseline_same_signals": 80.84,
+          "baseline_same_signals": 79.66,
           "block_bootstrap_ci95": {
             "unique_candles": 668,
-            "win_rate_ci95_low": 76.48,
-            "win_rate_ci95_high": 81.13
+            "win_rate_ci95_low": 76.46,
+            "win_rate_ci95_high": 81.03
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3720,
-          "trades": 3720,
-          "wins": 3165,
-          "win_rate": 85.08,
-          "unique_candles": 633,
-          "baseline_same_signals": 85.08,
+          "signals": 4015,
+          "trades": 4015,
+          "wins": 3381,
+          "win_rate": 84.21,
+          "unique_candles": 650,
+          "baseline_same_signals": 84.21,
           "block_bootstrap_ci95": {
-            "unique_candles": 633,
-            "win_rate_ci95_low": 79.14,
-            "win_rate_ci95_high": 84.0
+            "unique_candles": 650,
+            "win_rate_ci95_low": 77.66,
+            "win_rate_ci95_high": 82.87
           }
         }
       ]
     },
     {
       "fold": 21,
-      "train_start": "2026-08-29T11:45:00+00:00",
-      "train_end": "2026-09-19T11:45:00+00:00",
-      "test_end": "2026-09-26T11:45:00+00:00",
+      "train_start": "2026-08-30T11:30:00+00:00",
+      "train_end": "2026-09-20T11:30:00+00:00",
+      "test_end": "2026-09-27T11:30:00+00:00",
       "train_observations": 26195,
       "test_observations": 8736,
       "train_state_count": 130,
-      "usable_state_count": 75,
+      "usable_state_count": 76,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7608,
-          "trades": 7608,
-          "wins": 5520,
-          "win_rate": 72.56,
+          "signals": 7409,
+          "trades": 7409,
+          "wins": 5490,
+          "win_rate": 74.1,
           "unique_candles": 668,
-          "baseline_same_signals": 72.38,
+          "baseline_same_signals": 73.95,
           "block_bootstrap_ci95": {
             "unique_candles": 668,
-            "win_rate_ci95_low": 71.91,
-            "win_rate_ci95_high": 76.09
+            "win_rate_ci95_low": 73.27,
+            "win_rate_ci95_high": 77.57
           }
         },
         {
           "threshold": 0.6,
-          "signals": 5976,
-          "trades": 5976,
-          "wins": 4586,
-          "win_rate": 76.74,
-          "unique_candles": 665,
-          "baseline_same_signals": 76.76,
+          "signals": 5724,
+          "trades": 5724,
+          "wins": 4494,
+          "win_rate": 78.51,
+          "unique_candles": 666,
+          "baseline_same_signals": 78.51,
           "block_bootstrap_ci95": {
-            "unique_candles": 665,
-            "win_rate_ci95_low": 75.89,
-            "win_rate_ci95_high": 80.46
+            "unique_candles": 666,
+            "win_rate_ci95_low": 76.93,
+            "win_rate_ci95_high": 81.34
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4596,
-          "trades": 4596,
-          "wins": 3769,
-          "win_rate": 82.01,
-          "unique_candles": 665,
-          "baseline_same_signals": 82.03,
+          "signals": 4311,
+          "trades": 4311,
+          "wins": 3614,
+          "win_rate": 83.83,
+          "unique_candles": 666,
+          "baseline_same_signals": 83.83,
           "block_bootstrap_ci95": {
-            "unique_candles": 665,
-            "win_rate_ci95_low": 79.26,
-            "win_rate_ci95_high": 83.81
+            "unique_candles": 666,
+            "win_rate_ci95_low": 80.74,
+            "win_rate_ci95_high": 85.23
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3754,
-          "trades": 3754,
-          "wins": 3211,
-          "win_rate": 85.54,
-          "unique_candles": 633,
-          "baseline_same_signals": 85.54,
+          "signals": 3548,
+          "trades": 3548,
+          "wins": 3083,
+          "win_rate": 86.89,
+          "unique_candles": 624,
+          "baseline_same_signals": 86.89,
           "block_bootstrap_ci95": {
-            "unique_candles": 633,
-            "win_rate_ci95_low": 80.99,
-            "win_rate_ci95_high": 85.94
+            "unique_candles": 624,
+            "win_rate_ci95_low": 83.31,
+            "win_rate_ci95_high": 87.75
           }
         }
       ]
     },
     {
       "fold": 22,
-      "train_start": "2026-09-05T11:45:00+00:00",
-      "train_end": "2026-09-26T11:45:00+00:00",
-      "test_end": "2026-10-03T11:45:00+00:00",
+      "train_start": "2026-09-06T11:30:00+00:00",
+      "train_end": "2026-09-27T11:30:00+00:00",
+      "test_end": "2026-10-04T11:30:00+00:00",
       "train_observations": 26195,
-      "test_observations": 8736,
+      "test_observations": 8723,
       "train_state_count": 130,
       "usable_state_count": 77,
       "evaluations": [
         {
           "threshold": 0.55,
-          "signals": 7867,
-          "trades": 7867,
-          "wins": 5791,
-          "win_rate": 73.61,
-          "unique_candles": 669,
-          "baseline_same_signals": 73.43,
+          "signals": 7861,
+          "trades": 7861,
+          "wins": 5821,
+          "win_rate": 74.05,
+          "unique_candles": 668,
+          "baseline_same_signals": 73.85,
           "block_bootstrap_ci95": {
-            "unique_candles": 669,
-            "win_rate_ci95_low": 72.51,
-            "win_rate_ci95_high": 76.73
+            "unique_candles": 668,
+            "win_rate_ci95_low": 73.13,
+            "win_rate_ci95_high": 77.25
           }
         },
         {
           "threshold": 0.6,
-          "signals": 6140,
-          "trades": 6140,
-          "wins": 4750,
-          "win_rate": 77.36,
-          "unique_candles": 667,
-          "baseline_same_signals": 77.35,
+          "signals": 6085,
+          "trades": 6085,
+          "wins": 4716,
+          "win_rate": 77.5,
+          "unique_candles": 666,
+          "baseline_same_signals": 77.49,
           "block_bootstrap_ci95": {
-            "unique_candles": 667,
-            "win_rate_ci95_low": 75.89,
-            "win_rate_ci95_high": 80.43
+            "unique_candles": 666,
+            "win_rate_ci95_low": 76.24,
+            "win_rate_ci95_high": 80.56
           }
         },
         {
           "threshold": 0.65,
-          "signals": 4221,
-          "trades": 4221,
-          "wins": 3484,
-          "win_rate": 82.54,
-          "unique_candles": 666,
-          "baseline_same_signals": 82.54,
+          "signals": 4294,
+          "trades": 4294,
+          "wins": 3523,
+          "win_rate": 82.04,
+          "unique_candles": 665,
+          "baseline_same_signals": 82.02,
           "block_bootstrap_ci95": {
-            "unique_candles": 666,
-            "win_rate_ci95_low": 79.48,
-            "win_rate_ci95_high": 84.18
+            "unique_candles": 665,
+            "win_rate_ci95_low": 79.08,
+            "win_rate_ci95_high": 83.68
           }
         },
         {
           "threshold": 0.7,
-          "signals": 3732,
-          "trades": 3732,
-          "wins": 3128,
-          "win_rate": 83.82,
-          "unique_candles": 623,
-          "baseline_same_signals": 83.82,
+          "signals": 3927,
+          "trades": 3927,
+          "wins": 3260,
+          "win_rate": 83.02,
+          "unique_candles": 665,
+          "baseline_same_signals": 82.99,
           "block_bootstrap_ci95": {
-            "unique_candles": 623,
-            "win_rate_ci95_low": 79.39,
-            "win_rate_ci95_high": 84.56
+            "unique_candles": 665,
+            "win_rate_ci95_low": 79.71,
+            "win_rate_ci95_high": 84.28
           }
         }
       ]
